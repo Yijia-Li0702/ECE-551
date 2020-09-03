@@ -1,6 +1,6 @@
-Grading at 09/03/2020:08:34:34.836654
-For commit ID ebbaa6db5fb4b6d87e80773a042405669266e4b3
-Grading at Thu Sep  3 16:34:34 CST 2020
+Grading at 09/03/2020:08:37:25.453881
+For commit ID 928fce76d4966e91483ed6f962c9ce9f340dc242
+Grading at Thu Sep  3 16:37:25 CST 2020
 Checking syntax of declarations, and code that uses them
 mytypes.c has either illegal, or un-useable declarations
 the mostly likely causes are that you
