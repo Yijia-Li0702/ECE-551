@@ -1,0 +1,476 @@
+yl730@dku-vcm-508:~/ece551/028_tests_power$ ./run_all.sh 
+**Testing broken implementation 10 **
+-------------------------------------
+
+Your test program did not identify /usr/local/ece551/power/power10.o as broken!
+yl730@dku-vcm-508:~/ece551/028_tests_power$ ./run_all.sh 
+**Testing broken implementation 10 **
+-------------------------------------
+
+Your test program did not identify /usr/local/ece551/power/power10.o as broken!
+yl730@dku-vcm-508:~/ece551/028_tests_power$ ./run_all.sh 
+**Testing broken implementation 10 **
+-------------------------------------
+
+Your test program did not identify /usr/local/ece551/power/power10.o as broken!
+yl730@dku-vcm-508:~/ece551/028_tests_power$ ./run_all.sh 
+**Testing broken implementation 10 **
+-------------------------------------
+
+Your test program did not identify /usr/local/ece551/power/power10.o as broken!
+yl730@dku-vcm-508:~/ece551/028_tests_power$ ./run_all.sh 
+**Testing broken implementation 10 **
+-------------------------------------
+
+Your test program did not identify /usr/local/ece551/power/power10.o as broken!
+yl730@dku-vcm-508:~/ece551/028_tests_power$ ./run_all.sh 
+**Testing broken implementation 10 **
+-------------------------------------
+
+Your test program did not identify /usr/local/ece551/power/power10.o as broken!
+yl730@dku-vcm-508:~/ece551/028_tests_power$ ./run_all.sh 
+**Testing broken implementation 10 **
+-------------------------------------
+
+Your test program did not identify /usr/local/ece551/power/power10.o as broken!
+yl730@dku-vcm-508:~/ece551/028_tests_power$ ./run_all.sh 
+**Testing broken implementation 10 **
+-------------------------------------
+
+Your test program did not identify /usr/local/ece551/power/power10.o as broken!
+yl730@dku-vcm-508:~/ece551/028_tests_power$ ./run_all.sh 
+**Testing broken implementation 10 **
+-------------------------------------
+
+Your test program did not identify /usr/local/ece551/power/power10.o as broken!
+yl730@dku-vcm-508:~/ece551/028_tests_power$ ./run_all.sh 
+**Testing broken implementation 10 **
+-------------------------------------
+
+Your test program did not identify /usr/local/ece551/power/power10.o as broken!
+yl730@dku-vcm-508:~/ece551/028_tests_power$ ./run_all.sh 
+**Testing broken implementation 10 **
+-------------------------------------
+
+Your test program did not identify /usr/local/ece551/power/power10.o as broken!
+yl730@dku-vcm-508:~/ece551/028_tests_power$ ./run_all.sh 
+**Testing broken implementation 10 **
+-------------------------------------
+
+Your test program did not identify /usr/local/ece551/power/power10.o as broken!
+yl730@dku-vcm-508:~/ece551/028_tests_power$ ./run_all.sh 
+**Testing broken implementation 10 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 11 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 1 **
+-------------------------------------
+
+Your test program did not identify /usr/local/ece551/power/power1.o as broken!
+yl730@dku-vcm-508:~/ece551/028_tests_power$ ./run_all.sh 
+**Testing broken implementation 10 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 11 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 1 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 2 **
+-------------------------------------
+
+./run_all.sh: line 3: 30400 Segmentation fault      (core dumped) ./test-power
+
+**Testing broken implementation 3 **
+-------------------------------------
+
+Your test program did not identify /usr/local/ece551/power/power3.o as broken!
+yl730@dku-vcm-508:~/ece551/028_tests_power$ ./run_all.sh 
+**Testing broken implementation 10 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 11 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 1 **
+-------------------------------------
+
+Your test program did not identify /usr/local/ece551/power/power1.o as broken!
+yl730@dku-vcm-508:~/ece551/028_tests_power$./r 
+yl730@dku-vcm-508:~/ece551/028_tests_power$ ./run_all.sh 
+**Testing broken implementation 10 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 11 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 1 **
+-------------------------------------
+
+Your test program did not identify /usr/local/ece551/power/power1.o as broken!
+yl730@dku-vcm-508:~/ece551/028_tests_power$ ./run_all.sh 
+**Testing broken implementation 10 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 11 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 1 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 2 **
+-------------------------------------
+
+./run_all.sh: line 3: 30527 Segmentation fault      (core dumped) ./test-power
+
+**Testing broken implementation 3 **
+-------------------------------------
+
+Your test program did not identify /usr/local/ece551/power/power3.o as broken!
+yl730@dku-vcm-508:~/ece551/028_tests_power$ ./run_all.sh 
+**Testing broken implementation 10 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 11 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 1 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 2 **
+-------------------------------------
+
+./run_all.sh: line 3: 30671 Segmentation fault      (core dumped) ./test-power
+
+**Testing broken implementation 3 **
+-------------------------------------
+
+Your test program did not identify /usr/local/ece551/power/power3.o as broken!
+yl730@dku-vcm-508:~/ece551/028_tests_power$ ./run_all.sh 
+**Testing broken implementation 10 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 11 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 1 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 2 **
+-------------------------------------
+
+./run_all.sh: line 3: 30725 Segmentation fault      (core dumped) ./test-power
+
+**Testing broken implementation 3 **
+-------------------------------------
+
+Your test program did not identify /usr/local/ece551/power/power3.o as broken!
+yl730@dku-vcm-508:~/ece551/028_tests_power$ ./run_all.sh 
+**Testing broken implementation 10 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 11 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 1 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 2 **
+-------------------------------------
+
+./run_all.sh: line 3: 30778 Segmentation fault      (core dumped) ./test-power
+
+**Testing broken implementation 3 **
+-------------------------------------
+
+Your test program did not identify /usr/local/ece551/power/power3.o as broken!
+yl730@dku-vcm-508:~/ece551/028_tests_power$ ./run_all.sh 
+**Testing broken implementation 10 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 11 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 1 **
+-------------------------------------
+
+Your test program did not identify /usr/local/ece551/power/power1.o as broken!
+yl730@dku-vcm-508:~/ece551/028_tests_power$ ./run_all.sh 
+**Testing broken implementation 10 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 11 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 1 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 2 **
+-------------------------------------
+
+./run_all.sh: line 3: 30869 Segmentation fault      (core dumped) ./test-power
+
+**Testing broken implementation 3 **
+-------------------------------------
+
+Your test program did not identify /usr/local/ece551/power/power3.o as broken!
+yl730@dku-vcm-508:~/ece551/028_tests_power$ ./run_all.sh 
+**Testing broken implementation 10 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 11 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 1 **
+-------------------------------------
+
+Your test program did not identify /usr/local/ece551/power/power1.o as broken!
+yl730@dku-vcm-508:~/ece551/028_tests_power$ ./run_all.sh 
+**Testing broken implementation 10 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 11 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 1 **
+-------------------------------------
+
+Your test program did not identify /usr/local/ece551/power/power1.o as broken!
+yl730@dku-vcm-508:~/ece551/028_tests_power$ ./run_all.sh 
+**Testing broken implementation 10 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 11 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 1 **
+-------------------------------------
+
+Your test program did not identify /usr/local/ece551/power/power1.o as broken!
+yl730@dku-vcm-508:~/ece551/028_tests_power$ ./run_all.sh 
+**Testing broken implementation 10 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 11 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 1 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 2 **
+-------------------------------------
+
+./run_all.sh: line 3: 31023 Segmentation fault      (core dumped) ./test-power
+
+**Testing broken implementation 3 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 4 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 5 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 6 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 7 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 8 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 9 **
+-------------------------------------
+
+you are wrong!
+**Testing correct implementation **
+-------------------------------------
+
+you are wrong!Your test program falsely failed the correct implementation!
+yl730@dku-vcm-508:~/ece551/028_tests_power$ ./run_all.sh 
+**Testing broken implementation 10 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 11 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 1 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 2 **
+-------------------------------------
+
+./run_all.sh: line 3: 31149 Segmentation fault      (core dumped) ./test-power
+
+**Testing broken implementation 3 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 4 **
+-------------------------------------
+
+Your test program did not identify /usr/local/ece551/power/power4.o as broken!
+yl730@dku-vcm-508:~/ece551/028_tests_power$ ./run_all.sh 
+**Testing broken implementation 10 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 11 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 1 **
+-------------------------------------
+
+Your test program did not identify /usr/local/ece551/power/power1.o as broken!
+yl730@dku-vcm-508:~/ece551/028_tests_power$ ./run_all.sh 
+**Testing broken implementation 10 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 11 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 1 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 2 **
+-------------------------------------
+
+./run_all.sh: line 3: 31246 Segmentation fault      (core dumped) ./test-power
+
+**Testing broken implementation 3 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 4 **
+-------------------------------------
+
+Your test program did not identify /usr/local/ece551/power/power4.o as broken!
+yl730@dku-vcm-508:~/ece551/028_tests_power$ ./run_all.sh 
+**Testing broken implementation 10 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 11 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 1 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 2 **
+-------------------------------------
+
+./run_all.sh: line 3: 31324 Segmentation fault      (core dumped) ./test-power
+
+**Testing broken implementation 3 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 4 **
+-------------------------------------
+
+Your test program did not identify /usr/local/ece551/power/power4.o as broken!
+yl730@dku-vcm-508:~/ece551/028_tests_power$ ./run_all.sh 
+**Testing broken implementation 10 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 11 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 1 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 2 **
+-------------------------------------
+
+./run_all.sh: line 3: 31387 Segmentation fault      (core dumped) ./test-power
+
+**Testing broken implementation 3 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 4 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 5 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 6 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 7 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 8 **
+-------------------------------------
+
+you are wrong!
+**Testing broken implementation 9 **
+-------------------------------------
+
+you are wrong!
+**Testing correct implementation **
+-------------------------------------
+
+
+yl730@dku-vcm-508:~/ece551/028_tests_power$ 
