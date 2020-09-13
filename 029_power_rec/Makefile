@@ -1,0 +1,6 @@
+myProgram:test-power.c power.o
+	gcc -o myProgram test-power.c power.o -lm
+power.o: power.c
+	gcc -std=gnu99 -pedantic -Wall -c power.c
+
+

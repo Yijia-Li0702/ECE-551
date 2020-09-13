@@ -1,0 +1,19 @@
+yl730@dku-vcm-508:~/ece551/029_power_rec$ make
+make: 'myProgram' is up to date.
+yl730@dku-vcm-508:~/ece551/029_power_rec$ make clean
+rm-f myProgram *.o *.c~x
+/bin/sh: 1: rm-f: not found
+Makefile:7: recipe for target 'clean' failed
+make: *** [clean] Error 127
+yl730@dku-vcm-508:~/ece551/029_power_rec$ make clean
+rm-f myProgram *.o *.c~
+/bin/sh: 1: rm-f: not found
+Makefile:7: recipe for target 'clean' failed
+make: *** [clean] Error 127
+yl730@dku-vcm-508:~/ece551/029_power_rec$ ls
+ Makefile   Makefile~   myProgram   power.c   power.o   README  '*shell*'   test-power.c
+yl730@dku-vcm-508:~/ece551/029_power_rec$ make
+make: 'myProgram' is up to date.
+yl730@dku-vcm-508:~/ece551/029_power_rec$ ./test-power.c
+bash: ./test-power.c: Permission denied
+yl730@dku-vcm-508:~/ece551/029_power_rec$ cat 
