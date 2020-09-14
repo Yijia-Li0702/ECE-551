@@ -1,9 +1,9 @@
-Grading at 09/13/2020:15:26:15.771683
-For commit ID 088987bf4e16c853d67e0ef2d759008aff7257c8
-Grading at Sun Sep 13 23:26:15 CST 2020
+Grading at 09/14/2020:02:36:28.693481
+For commit ID 9a7e8dffdf412816ce947e4088264c7e7e71270b
+Grading at Mon Sep 14 10:36:28 CST 2020
 Attempting to compile power.c
 power.c: In function ‘power’:
-power.c:21:1: error: control reaches end of non-void function [-Werror=return-type]
+power.c:25:1: error: control reaches end of non-void function [-Werror=return-type]
  }
  ^
 cc1: all warnings being treated as errors
