@@ -3,17 +3,11 @@
 #include <math.h>
 
 unsigned power(unsigned x, unsigned y){
-  if(x == 0 && y == 0){
-    return 1;
-  }
   if(y == 0){
     return 1;
   }
-  if(y == 1){
-    return x;
-  }
-  if(y > 1){
-    return x * power(x,y--);
+
+  return x * power(x,y-1);
   }
   /*else if(y < 1 && y >= 0){
     return pow(x,y);
@@ -22,7 +16,7 @@ unsigned power(unsigned x, unsigned y){
     return power(x, -y);
   }*/
   
-}
+
 /*void run_check(unsigned x, unsigned y, unsigned expected_ans){
   if(power(x,y) != expected_ans){
     printf("you are wrong!");
