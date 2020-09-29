@@ -32,10 +32,8 @@ int main(void) {
   char str4[] = "Hello, my name is Inigo Montoya.";
   char str5[] = "You can be my wingman anyday!";
   char str6[] = "Executor Selendis! Unleash the full power of your forces! There may be no tomorrow!";
-  char str7[] = "  ";
-  char str8[] = "1";
-  char * array[] = {str0, str1, str2, str3, str4, str5, str6, str7, str8};
-  for (int i = 0; i < 9; i++) {
+  char * array[] = {str0, str1, str2, str3, str4, str5, str6};
+  for (int i = 0; i < 7; i++) {
     reverse(array[i]);
     printf("%s\n", array[i]);
   }
