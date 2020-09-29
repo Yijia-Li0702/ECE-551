@@ -2,9 +2,27 @@
 #include <stdlib.h>
 #include <string.h>
 
+void swap(char * a, char * b){
+  char temp = *a;
+  *a = *b;
+  *b = temp;
+}
+
 void reverse(char * str) {
   //WRITE ME!
+  size_t l = strlen(str);
+  size_t i = 0;
+  size_t j = l-1;
+  if(l >= 2){
+    while(i < j){
+      swap(&str[i],&str[j]);
+      i++;
+      j--;
+    }
+  }
 }
+
+
 
 int main(void) {
   char str0[] = "";
