@@ -1,0 +1,105 @@
+yl730@dku-vcm-508:~/ece551/048_tests_rot_matrix$ ./run_all.sh 
+Checking rotateMatrix1
+***Your tests failed to show that rotateMatrix1 was broken!
+Checking rotateMatrix2
+Checking rotateMatrix3
+Checking rotateMatrix4
+***Your tests failed to show that rotateMatrix4 was broken!
+Checking rotateMatrix5
+***Your tests failed to show that rotateMatrix5 was broken!
+Checking rotateMatrix6
+Checking rotateMatrix7
+Checking rotateMatrix8
+yl730@dku-vcm-508:~/ece551/048_tests_rot_matrix$ emacs tests.txt
+yl730@dku-vcm-508:~/ece551/048_tests_rot_matrix$ ./run_all.sh 
+Checking rotateMatrix1
+***Your tests failed to show that rotateMatrix1 was broken!
+Checking rotateMatrix2
+Checking rotateMatrix3
+Checking rotateMatrix4
+***Your tests failed to show that rotateMatrix4 was broken!
+Checking rotateMatrix5
+***Your tests failed to show that rotateMatrix5 was broken!
+Checking rotateMatrix6
+Checking rotateMatrix7
+Checking rotateMatrix8
+yl730@dku-vcm-508:~/ece551/048_tests_rot_matrix$ ./run_all.sh 
+Checking rotateMatrix1
+***Your tests failed to show that rotateMatrix1 was broken!
+Checking rotateMatrix2
+Checking rotateMatrix3
+Checking rotateMatrix4
+***Your tests failed to show that rotateMatrix4 was broken!
+Checking rotateMatrix5
+***Your tests failed to show that rotateMatrix5 was broken!
+Checking rotateMatrix6
+Checking rotateMatrix7
+Checking rotateMatrix8
+yl730@dku-vcm-508:~/ece551/048_tests_rot_matrix$ ls
+ next-README   tests1.txt~   tests4.txt    tests7.txt    tests9.txt~
+ README        tests2.txt    tests5.txt    tests7.txt~   tests.txt
+ run_all.sh    tests2.txt~   tests5.txt~   tests8.txt    tests.txt~
+'#test6#'      tests3.txt    tests6.txt    tests8.txt~
+ tests1.txt    tests3.txt~   tests6.txt~   tests9.txt
+yl730@dku-vcm-508:~/ece551/048_tests_rot_matrix$ emacs tests.txt
+yl730@dku-vcm-508:~/ece551/048_tests_rot_matrix$ ./run_all.sh 
+Checking rotateMatrix1
+***Your tests failed to show that rotateMatrix1 was broken!
+Checking rotateMatrix2
+Checking rotateMatrix3
+Checking rotateMatrix4
+***Your tests failed to show that rotateMatrix4 was broken!
+Checking rotateMatrix5
+***Your tests failed to show that rotateMatrix5 was broken!
+Checking rotateMatrix6
+Checking rotateMatrix7
+Checking rotateMatrix8
+yl730@dku-vcm-508:~/ece551/048_tests_rot_matrix$ ./run_all.sh 
+Checking rotateMatrix1
+***Your tests failed to show that rotateMatrix1 was broken!
+Checking rotateMatrix2
+Checking rotateMatrix3
+Checking rotateMatrix4
+***Your tests failed to show that rotateMatrix4 was broken!
+Checking rotateMatrix5
+***Your tests failed to show that rotateMatrix5 was broken!
+Checking rotateMatrix6
+Checking rotateMatrix7
+Checking rotateMatrix8
+yl730@dku-vcm-508:~/ece551/048_tests_rot_matrix$ ./run_all.sh 
+Checking rotateMatrix1
+***Your tests failed to show that rotateMatrix1 was broken!
+Checking rotateMatrix2
+Checking rotateMatrix3
+Checking rotateMatrix4
+***Your tests failed to show that rotateMatrix4 was broken!
+Checking rotateMatrix5
+***Your tests failed to show that rotateMatrix5 was broken!
+Checking rotateMatrix6
+Checking rotateMatrix7
+Checking rotateMatrix8
+yl730@dku-vcm-508:~/ece551/048_tests_rot_matrix$ ./run_all.sh 
+Checking rotateMatrix1
+***Your tests failed to show that rotateMatrix1 was broken!
+Checking rotateMatrix2
+Checking rotateMatrix3
+Checking rotateMatrix4
+***Your tests failed to show that rotateMatrix4 was broken!
+Checking rotateMatrix5
+***Your tests failed to show that rotateMatrix5 was broken!
+Checking rotateMatrix6
+Checking rotateMatrix7
+Checking rotateMatrix8
+yl730@dku-vcm-508:~/ece551/048_tests_rot_matrix$ ./run_all.sh 
+Checking rotateMatrix1
+***Your tests failed to show that rotateMatrix1 was broken!
+Checking rotateMatrix2
+Checking rotateMatrix3
+Checking rotateMatrix4
+***Your tests failed to show that rotateMatrix4 was broken!
+Checking rotateMatrix5
+***Your tests failed to show that rotateMatrix5 was broken!
+Checking rotateMatrix6
+Checking rotateMatrix7
+Checking rotateMatrix8
+yl730@dku-vcm-508:~/ece551/048_tests_rot_matrix$
