@@ -1,0 +1,12 @@
+Grading at 10/11/2020:02:49:18.034684
+For commit ID 5c95f584f3859aa2c967a88900608ec22e00c262
+Grading at Sun Oct 11 10:49:17 CST 2020
+Attempting to compile rotateMatrix.c
+rotateMatrix.c: In function ‘rotate’:
+rotateMatrix.c:10:7: error: ‘a’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
+     if(a!='\n'){
+       ^
+cc1: all warnings being treated as errors
+The code did not compile!
+
+Overall Grade: F
