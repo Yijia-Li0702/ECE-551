@@ -14,8 +14,6 @@ country_t parseLine(char * line) {
       if(p >=64){
 	fprintf(stderr, "name is too long\n");
 	exit(EXIT_FAILURE);
-	//perror("name is too long");
-	//return EXIT_FAILURE;
       }
       ans.name[i] = line[i];
       p++;
@@ -24,8 +22,6 @@ country_t parseLine(char * line) {
       if(i == l-1){
 	fprintf(stderr, "there's no population1\n");
 	exit(EXIT_FAILURE);
-	//perror("there's no population");
-	//return EXIT_FAILURE;
       }
     } else {
       //check if , appear at the end of the line
@@ -41,8 +37,7 @@ country_t parseLine(char * line) {
       //if pop is unsigned
       if(ans.population < 0){
 	fprintf(stderr, "type of pop is wrong\n");
-	exit(EXIT_FAILURE);
-	//perror("type of pop is wrong");	
+	exit(EXIT_FAILURE);	
       }
       return ans;
     }
@@ -68,6 +63,13 @@ void calcRunningAvg(unsigned * data, size_t n_days, double * avg) {
 
 void calcCumulative(unsigned * data, size_t n_days, uint64_t pop, double * cum) {
   //WRITE ME
+  double cum_n = 0;
+  double cum_per = 0;
+  for(size_t i = 0; i < n_days;i++){
+    cum_n += data[i];
+    cum_per = cum_n / pop;
+    cum[i] = cum_per;    
+  }
 }
 
 void printCountryWithMax(country_t * countries,
