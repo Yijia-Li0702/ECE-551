@@ -77,4 +77,20 @@ void printCountryWithMax(country_t * countries,
                          unsigned ** data,
                          size_t n_days) {
   //WRITE ME
+
+  for(size_t i = 0; i < n_days; i++){
+      unsigned max = 0;
+      size_t ind = 0;
+      //data[country][day]
+      for(size_t j = 0; j < n_countries;j++){
+	if(data[j][i]>max){
+	  max = data[j][i];
+	  ind = j;
+	}
+      }
+      country_t c = countries[ind];
+      char * n = c.name;
+      printf("%s has the most daily cases with %u\n", n, max);
+
+  }
 }
