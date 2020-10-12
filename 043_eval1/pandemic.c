@@ -67,7 +67,7 @@ void calcCumulative(unsigned * data, size_t n_days, uint64_t pop, double * cum) 
   double cum_per = 0;
   for(size_t i = 0; i < n_days;i++){
     cum_n += data[i];
-    cum_per = cum_n / pop;
+    cum_per = (cum_n * 100000)/ pop;
     cum[i] = cum_per;    
   }
 }
