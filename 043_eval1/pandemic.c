@@ -8,7 +8,7 @@ country_t parseLine(char * line) {
   country_t ans;
   size_t l = strlen(line);
   size_t p = 0;
-  for(int i = 0;i<l;i++){
+  for(size_t i = 0;i<l;i++){
     if(line[i] != ','){
       //check if the name is longer than 64
       if(p >=64){
@@ -54,6 +54,16 @@ country_t parseLine(char * line) {
 
 void calcRunningAvg(unsigned * data, size_t n_days, double * avg) {
   //WRITE ME
+  //???don't we need to check if n_days <7
+  //???what if the length of avg != n_day-6
+  for(size_t i = 0;i<n_days-6;i++){
+    double sum = 0;
+    for(int j = i;j< i+7;j++){
+      sum += data[j];
+    }
+    double a = sum/7;
+    avg[i]=a;    
+  }  
 }
 
 void calcCumulative(unsigned * data, size_t n_days, uint64_t pop, double * cum) {
