@@ -5,6 +5,7 @@
 
 country_t parseLine(char * line) {
   //WRITE ME
+  //strtoul!!!!!
   country_t ans;
   size_t l = strlen(line);
   size_t p = 0;
