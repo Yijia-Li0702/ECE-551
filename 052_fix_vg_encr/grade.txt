@@ -1,6 +1,6 @@
-Grading at 10/14/2020:01:35:36.646134
-For commit ID 6e1f192b3ffd3825f48b8a8d0a8faaba1a49760c
-Grading at Wed Oct 14 09:35:32 CST 2020
+Grading at 10/14/2020:01:37:10.586367
+For commit ID 56f5b6523491e386bcc34e8ebb85fb4506bb1934
+Grading at Wed Oct 14 09:37:06 CST 2020
 Attempting to compile encrypt.c
 testcase1:
 valgrind reported memory errors
