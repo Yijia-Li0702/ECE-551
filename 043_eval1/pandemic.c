@@ -1,5 +1,6 @@
 #include "pandemic.h"
 #include <string.h>
+#include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -13,7 +14,6 @@ int isLegal(char* line, size_t start, size_t sz){
     else if(line[i] == '\0'|| line[i] == '\n'){
       continue;
     } else {
-      printf("test!!!!! %d\n",line[i]);
       return 0;
     }
   }
@@ -58,7 +58,7 @@ country_t parseLine(char * line) {
       char * ptr  = line + l;
       ans.population = strtoul(line +i+1, &ptr, 10);
       if (errno == ERANGE){
-         fprintf("population is overflow ");
+	 fprintf(stderr, "population is overflow ");
 	 exit(EXIT_FAILURE);
       }
       //if pop is signed
