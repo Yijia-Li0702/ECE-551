@@ -3,11 +3,30 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+//check if elements of line after ith are legal
+int isLegal(char* line, size_t start, size_t sz){
+  for(size_t i = start;i<sz;i++){
+  //is a number
+    if(line[i] >= 48 && line[i] <= 57){
+      continue;
+    } 
+    //is an end???do i need to check?
+    else if(line[i] == '\0'|| line[i] == '\n'){
+      continue;
+    } else {
+      return 0;
+    }
+  }
+  return 1;
+}
+
 country_t parseLine(char * line) {
   //WRITE ME
   //strtoul!!!!!
   country_t ans;
+  //length of line
   size_t l = strlen(line);
+  //the length of name
   size_t p = 0;
   for(size_t i = 0;i<l;i++){
     if(line[i] != ','){
@@ -18,7 +37,6 @@ country_t parseLine(char * line) {
       }
       ans.name[i] = line[i];
       p++;
-
       //check if , didn't appear
       if(i == l-1){
 	fprintf(stderr, "there's no population1\n");
@@ -29,12 +47,19 @@ country_t parseLine(char * line) {
       if(i==l-1){
 	fprintf(stderr, "there's no population2\n");
 	exit(EXIT_FAILURE);	
-	//perror("there's no population");
       }
       //end of name
       ans.name[i] = '\0';
+      //check isLegal
+      if(isLegal(line, i+1, l) != 1){
+      	fprintf(stderr, "illegal population\n");
+	exit(EXIT_FAILURE);
+      }
       //change the remaining to int and put it into population
-      ans.population = atoi(line+i+1);
+      char * ptr  = line + l - 1;
+      //char * ptr;
+      ans.population = strtoul(line +i+1, &ptr, 10);
+      //ans.population = atoi(line+i+1);
       //if pop is unsigned
       if(ans.population < 0){
 	fprintf(stderr, "type of pop is wrong\n");
@@ -50,8 +75,16 @@ country_t parseLine(char * line) {
 
 void calcRunningAvg(unsigned * data, size_t n_days, double * avg) {
   //WRITE ME
-  //???don't we need to check if n_days <7
   //???what if the length of avg != n_day-6
+  if(n_days<7){
+    fprintf(stderr, "the length of data is too short\n");
+    exit(EXIT_FAILURE);
+  }
+  //if the length of avg != n_day-6
+  //if(strlen(avg) < n_days - 6){
+  //  fprintf(stderr, "the length of avg is too short\n");
+  //exit(EXIT_FAILURE);
+  // }
   for(size_t i = 0;i<n_days-6;i++){
     double sum = 0;
     for(int j = i;j< i+7;j++){
