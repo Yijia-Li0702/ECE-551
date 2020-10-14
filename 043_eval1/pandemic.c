@@ -23,6 +23,14 @@ int isLegal(char* line, size_t start, size_t sz){
 
 country_t parseLine(char * line) {
   //WRITE ME
+  if(line == NULL){
+    fprintf(stderr, "null pointer\n");
+    exit(EXIT_FAILURE);
+  }
+  if(line[0] == ','){
+    fprintf(stderr, "no name\n");
+    exit(EXIT_FAILURE);
+  }
   country_t ans;
   //length of line
   size_t l = strlen(line);
