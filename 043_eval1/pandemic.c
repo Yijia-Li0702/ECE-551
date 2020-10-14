@@ -9,11 +9,12 @@ int isLegal(char* line, size_t start, size_t sz){
   for(size_t i = start;i<sz;i++){
   //is a number
     if(line[i] >= 48 && line[i] <= 57){
-      continue;
+    continue;
     } 
     else if(line[i] == '\0'|| line[i] == '\n'){
       continue;
     } else {
+      printf("%ld",start);
       return 0;
     }
   }
@@ -58,13 +59,13 @@ country_t parseLine(char * line) {
       char * ptr  = line + l;
       ans.population = strtoul(line +i+1, &ptr, 10);
       if (errno == ERANGE){
-	 fprintf(stderr, "population is overflow ");
+	fprintf(stderr, "population is overflow\n");
 	 exit(EXIT_FAILURE);
-      }
+	 }
       //if pop is signed
       if(ans.population < 0){
-	fprintf(stderr, "type of pop is wrong\n");
-	exit(EXIT_FAILURE);	
+      fprintf(stderr, "type of pop is wrong\n");
+      exit(EXIT_FAILURE);	
       }
       return ans;
     }
@@ -77,15 +78,14 @@ country_t parseLine(char * line) {
 void calcRunningAvg(unsigned * data, size_t n_days, double * avg) {
   //WRITE ME
   //???what if the length of avg != n_day-6
+  if(data == NULL || avg == NULL){
+     fprintf(stderr, "data is illegal\n");
+     exit(EXIT_FAILURE);
+  }
   if(n_days<7){
     fprintf(stderr, "the length of data is too short\n");
     exit(EXIT_FAILURE);
   }
-  //if the length of avg != n_day-6
-  //if(strlen(avg) < n_days - 6){
-  //  fprintf(stderr, "the length of avg is too short\n");
-  //exit(EXIT_FAILURE);
-  // }
   for(size_t i = 0;i<n_days-6;i++){
     double sum = 0;
     for(int j = i;j< i+7;j++){
@@ -97,7 +97,12 @@ void calcRunningAvg(unsigned * data, size_t n_days, double * avg) {
 }
 
 void calcCumulative(unsigned * data, size_t n_days, uint64_t pop, double * cum) {
+  if(data == NULL || cum == NULL){
+     fprintf(stderr, "data is illegal\n");
+     exit(EXIT_FAILURE);
+  }
   //WRITE ME
+  if()
   double cum_n = 0;
   double cum_per = 0;
   for(size_t i = 0; i < n_days;i++){
