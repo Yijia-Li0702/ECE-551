@@ -102,7 +102,6 @@ void calcCumulative(unsigned * data, size_t n_days, uint64_t pop, double * cum) 
      exit(EXIT_FAILURE);
   }
   //WRITE ME
-  if()
   double cum_n = 0;
   double cum_per = 0;
   for(size_t i = 0; i < n_days;i++){
