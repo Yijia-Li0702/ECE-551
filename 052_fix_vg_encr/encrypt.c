@@ -46,7 +46,7 @@ int main(int argc, char ** argv) {
   strcat(outFileName, ".enc");
   FILE * outFile = fopen(outFileName, "w");
   encrypt(f,key, outFile);
-  free(outFile);
+  free(outFileName);
   if (fclose(outFile) != 0) {
     perror("Failed to close the input file!");
     return EXIT_FAILURE;
