@@ -10,10 +10,10 @@ int isLegal(char* line, size_t start, size_t sz){
     if(line[i] >= 48 && line[i] <= 57){
       continue;
     } 
-    //is an end???do i need to check?
     else if(line[i] == '\0'|| line[i] == '\n'){
       continue;
     } else {
+      printf("test!!!!!");
       return 0;
     }
   }
@@ -22,11 +22,10 @@ int isLegal(char* line, size_t start, size_t sz){
 
 country_t parseLine(char * line) {
   //WRITE ME
-  //strtoul!!!!!
   country_t ans;
   //length of line
   size_t l = strlen(line);
-  //the length of name
+  //length of name
   size_t p = 0;
   for(size_t i = 0;i<l;i++){
     if(line[i] != ','){
@@ -56,7 +55,7 @@ country_t parseLine(char * line) {
 	exit(EXIT_FAILURE);
       }
       //change the remaining to int and put it into population
-      char * ptr  = line + l - 1;
+      char * ptr  = line + l;
       //char * ptr;
       ans.population = strtoul(line +i+1, &ptr, 10);
       //ans.population = atoi(line+i+1);
