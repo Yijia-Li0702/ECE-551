@@ -9,7 +9,7 @@ int isLegal(char* line, size_t start, size_t sz){
   for(size_t i = start;i<sz;i++){
   //is a number
     if(line[i] >= 48 && line[i] <= 57){
-    continue;
+      continue;
     } 
     else if(line[i] == '\0'|| line[i] == '\n'){
       continue;
@@ -60,24 +60,21 @@ country_t parseLine(char * line) {
       ans.population = strtoul(line +i+1, &ptr, 10);
       if (errno == ERANGE){
 	fprintf(stderr, "population is overflow\n");
-	 exit(EXIT_FAILURE);
+	exit(EXIT_FAILURE);
 	 }
       //if pop is signed
       if(ans.population < 0){
-      fprintf(stderr, "type of pop is wrong\n");
-      exit(EXIT_FAILURE);	
+	fprintf(stderr, "type of pop is wrong\n");
+	exit(EXIT_FAILURE);	
       }
       return ans;
     }
   }
-  //ans.name[0] = '\0';
-  //ans.population = 0;
   return ans;
 }
 
 void calcRunningAvg(unsigned * data, size_t n_days, double * avg) {
   //WRITE ME
-  //???what if the length of avg != n_day-6
   if(data == NULL || avg == NULL){
      fprintf(stderr, "data is illegal\n");
      exit(EXIT_FAILURE);
@@ -121,12 +118,12 @@ void printCountryWithMax(country_t * countries,
   for(size_t i = 0; i < n_days; i++){
 
       //data[country][day]
-      for(size_t j = 0; j < n_countries;j++){
-	if(data[j][i]>max){
-	  max = data[j][i];
-	  ind = j;
-	}
+    for(size_t j = 0; j < n_countries;j++){
+      if(data[j][i]>max){
+	max = data[j][i];
+	ind = j;
       }
+    }
   }
   country_t c = countries[ind];
   char * n = c.name;
