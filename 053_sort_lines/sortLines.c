@@ -22,17 +22,18 @@ void helper(void * f) {
   size_t i = 0;
   size_t sz;
   while (getline(&curr, &sz, f) >= 0) {
-    lines = realloc(lines, (i + 1) * sizeof(*lines));
+    lines = realloc(lines, (1+i) * sizeof(*lines));
     lines[i] = curr;
     curr = NULL;
     i++;
   }
-  free(curr);
+
   sortData(lines, i);
-  for (size_t j = 0; j < i; j++) {
-    printf("%s", lines[j]);
-    free(lines[j]);
+  for (size_t k = 0; k < i; k++) {
+    printf("%s", lines[k]);
+    free(lines[k]);
   }
+  free(curr);
   free(lines);
 }
 
@@ -44,7 +45,7 @@ int main(int argc, char ** argv) {
   }
   if(argc > 1){
     for (int i = 0; i < argc - 1; i++) {
-      FILE * f = fopen(argv[1 + i], "r");
+      FILE * f = fopen(argv[i+1], "r");
       if (f == NULL) {
 	fprintf(stderr, "empty file\n");
 	exit(EXIT_FAILURE);
