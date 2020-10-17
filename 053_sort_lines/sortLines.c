@@ -33,7 +33,6 @@ void helper(void * f) {
     printf("%s", lines[k]);
     free(lines[k]);
   }
-
   free(lines);
 }
 
