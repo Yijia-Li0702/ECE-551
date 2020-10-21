@@ -5,11 +5,9 @@
 
 char * computeOutputFileName(const char * inputName) {
   //WRITE ME
-  size_t len = strlen(inputName)+8;
+  char * s = ".counts";
+  size_t len = strlen(inputName);
   char * res = malloc(len*sizeof(*res));
-  strcpy(res,inputName);
-  const char * s = ".counts";
-  strcat(res,s);
-  return res;
+  
   
 }
