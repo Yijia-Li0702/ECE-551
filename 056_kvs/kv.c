@@ -22,8 +22,9 @@ kvarray_t * readKVs(const char * fname) {
     char * e = strchr(line,'=');
     char * n = strchr(line,'\n');
     res->arr = realloc(res->arr,(res->sz+1)*sizeof(*res->arr));
-    res->arr[res->sz].value = strndup(e+1,(size_t)(n-e-1));
     res->arr[res->sz].key = strndup(line,(size_t)(e-line));
+    res->arr[res->sz].value = strndup(e+1,(size_t)(n-e-1));
+   
     res->sz++;
   }
   free(line);
@@ -35,6 +36,10 @@ kvarray_t * readKVs(const char * fname) {
 }
 void freeKVs(kvarray_t * pairs) {
   //WRITE ME
+  for(size_t i = 0; i < pairs->sz; i++){
+    free(pairs->arr[i].key);
+    free(pairs->arr[i].value);
+  }
   free(pairs->arr);
   free(pairs);
 }
@@ -43,8 +48,7 @@ void printKVs(kvarray_t * pairs) {
   //WRITE ME
   for (size_t i = 0; i < pairs->sz; i++) {
     printf("key = '%s' value = '%s'\n", pairs->arr[i].key, pairs->arr[i].value);
-  }
-  
+  }  
 }
 
 char * lookupValue(kvarray_t * pairs, const char * key) {
