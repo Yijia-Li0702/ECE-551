@@ -13,21 +13,23 @@ void parse(FILE * f,char * story, catarray_t * cats){
     if(ifwrite == 1){
       if(c == '_'){
 	const char * cat = chooseWord("verb", cats);
-	i = strlen(story)+strlen(cat);
-	//i =i+strlen(cat);
-	story = realloc(story,i*sizeof(*story));
+	//i = strlen(story)+strlen(cat)+1;
+        i = i + 3;
+	story = realloc(story,(i+1)*sizeof(*story));
 	story = strcat(story, cat);
+	story[i] = '\0';
 	ifwrite = 0;
       } else if(c == '\n'){
-	i = strlen(story)+1;
-	//i++;
-	story = realloc(story,i*sizeof(*story));
+	i = i+1;
+	story = realloc(story,(i+1)*sizeof(*story));
 	story[i-1] = c;
+	story[i] = '\0';
       } else {
 	//i = strlen(story)+1;
-	i++;
-	story = realloc(story,i*sizeof(*story));
+	i = i+1;
+	story = realloc(story,(i+1)*sizeof(*story));
 	story[i-1] = c;
+	story[i] = '\0';
       }
       //printf("%d\n",i);
     } else if(ifwrite == 0){
@@ -48,8 +50,8 @@ void parse(FILE * f,char * story, catarray_t * cats){
     }
     //printf("%s\n",story);
   }
-  i++;
-  story = realloc(story,i*sizeof(*story));
-  story[i-1] = '\0';
+  // i++;
+  //story = realloc(story,i*sizeof(*story));
+  //story[i-1] = '\0';
   printf("%s\n",story);
 }
