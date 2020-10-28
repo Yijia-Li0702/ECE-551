@@ -23,7 +23,7 @@ void parse(FILE * f,char * story, catarray_t * cats){
 	i = strlen(story)+1;
 	//i++;
 	story = realloc(story,i*sizeof(*story));
-	story[i-1] = ' ';
+	story[i-1] = c;
       } else {
 	//i = strlen(story)+1;
 	i++;
