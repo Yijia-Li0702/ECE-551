@@ -50,8 +50,5 @@ void parse(FILE * f,char * story, catarray_t * cats){
     }
     //printf("%s\n",story);
   }
-  // i++;
-  //story = realloc(story,i*sizeof(*story));
-  //story[i-1] = '\0';
   printf("%s\n",story);
 }

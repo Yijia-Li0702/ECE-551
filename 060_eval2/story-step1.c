@@ -14,7 +14,6 @@ int main(int argc, char ** argv) {
     return EXIT_FAILURE;
   }
   char * story = malloc(sizeof(*story));
-  //story[0] = '\0';
   catarray_t * cats = NULL;
   parse(f,story,cats);
   //printf("%s\n",story);
