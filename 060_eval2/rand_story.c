@@ -13,7 +13,8 @@ void parse(FILE * f,char * story, catarray_t * cats){
     if(ifwrite == 1){
       //encounter a blank
       if(c == '_'){
-	i = i+3;
+	i = strlen(story)+3;
+	//i = i+3;
 	story = realloc(story,i*sizeof(*story));
 	const char * cat = chooseWord("verb", cats);
 	story = strcat(story, cat);
@@ -24,12 +25,12 @@ void parse(FILE * f,char * story, catarray_t * cats){
 	story = realloc(story,i*sizeof(*story));
 	story[i-1] = ' ';
       } else {
-	i = strlen(story);
+	//i = strlen(story)+1;
 	i++;
 	story = realloc(story,i*sizeof(*story));
 	story[i-1] = c;
       }
-      printf("%d\n",i);
+      //printf("%d\n",i);
     } else if(ifwrite == 0){
       //c is still in a blank check if it's the end of the blank
       if(c == '_'){
@@ -46,7 +47,7 @@ void parse(FILE * f,char * story, catarray_t * cats){
       }
       continue;
     }
-    printf("%s\n",story);
+    //printf("%s\n",story);
   }
   printf("%s\n",story);
 }
