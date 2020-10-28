@@ -1,6 +1,6 @@
-Grading at 10/28/2020:08:30:01.056101
-For commit ID a57457f9c49a2b3a5cd6f4a8f41ff1b2f2e7076e
-Grading at Wed Oct 28 16:30:00 CST 2020
+Grading at 10/28/2020:11:56:35.602638
+For commit ID e50566644508fee1faf753e698093c8a2218cebe
+Grading at Wed Oct 28 19:56:35 CST 2020
 Doing some basic sanity checking for your submission
 
 Step 1
@@ -13,8 +13,7 @@ rm story-step1.o
 The code compiled (good)
 Executable story-step1 exists (good)
 Checking with provided test case story.txt
-Line_2_did_not_match
-Your file did not match the expected ouput
+Your file matched the expected output
 
 Step 2
 Checking that story-step2 compiles
