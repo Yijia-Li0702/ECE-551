@@ -11,12 +11,11 @@ void parse(FILE * f,char * story, catarray_t * cats){
   
   while((c = fgetc(f))!=EOF){
     if(ifwrite == 1){
-      //encounter a blank
       if(c == '_'){
-	i = strlen(story)+3;
-	//i = i+3;
-	story = realloc(story,i*sizeof(*story));
 	const char * cat = chooseWord("verb", cats);
+	i = strlen(story)+strlen(cat);
+	//i =i+strlen(cat);
+	story = realloc(story,i*sizeof(*story));
 	story = strcat(story, cat);
 	ifwrite = 0;
       } else if(c == '\n'){
