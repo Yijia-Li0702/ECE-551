@@ -1,0 +1,188 @@
+yl730@dku-vcm-508:~/ece551/060_eval2$ emacs rand_story.h
+yl730@dku-vcm-508:~/ece551/060_eval2$ make
+gcc -std=gnu99 -pedantic -Wall -Werror -ggdb3 -c rand_story.c
+rand_story.c: In function ‘story_change’:
+rand_story.c:8:43: error: ‘cats’ undeclared (first use in this function); did you mean ‘cat’?
+     const char * cat = chooseWord("verb", cats);
+                                           ^~~~
+                                           cat
+rand_story.c:8:43: note: each undeclared identifier is reported only once for each function it appears in
+rand_story.c:17:18: error: ‘c’ undeclared (first use in this function)
+     story[i-1] = c;
+                  ^
+Makefile:8: recipe for target 'rand_story.o' failed
+make: *** [rand_story.o] Error 1
+yl730@dku-vcm-508:~/ece551/060_eval2$ make
+gcc -std=gnu99 -pedantic -Wall -Werror -ggdb3 -c rand_story.c
+rand_story.c: In function ‘story_change’:
+rand_story.c:9:16: error: ‘c’ undeclared (first use in this function)
+   story[i-1] = c;
+                ^
+rand_story.c:9:16: note: each undeclared identifier is reported only once for each function it appears in
+Makefile:8: recipe for target 'rand_story.o' failed
+make: *** [rand_story.o] Error 1
+yl730@dku-vcm-508:~/ece551/060_eval2$ make
+gcc -std=gnu99 -pedantic -Wall -Werror -ggdb3 -c rand_story.c
+rand_story.c:6:8: error: conflicting types for ‘story_change’
+ char * story_change(char * story, size_t i, size_t add,char c){
+        ^~~~~~~~~~~~
+In file included from rand_story.c:1:0:
+rand_story.h:9:8: note: previous declaration of ‘story_change’ was here
+ char * story_change(char * story,size_t i, size_t add);
+        ^~~~~~~~~~~~
+Makefile:8: recipe for target 'rand_story.o' failed
+make: *** [rand_story.o] Error 1
+yl730@dku-vcm-508:~/ece551/060_eval2$ emacs rand_story.h
+yl730@dku-vcm-508:~/ece551/060_eval2$ make
+gcc -std=gnu99 -pedantic -Wall -Werror -ggdb3 -c rand_story.c
+gcc -std=gnu99 -pedantic -Wall -Werror -ggdb3 -c story-step1.c
+gcc -o story-step1 story-step1.o rand_story.o provided.o
+make: *** No rule to make target 'story-step2', needed by 'all'.  Stop.
+rm story-step1.o
+yl730@dku-vcm-508:~/ece551/060_eval2$ valgrind ./story-step1 story.txt 
+==127004== Memcheck, a memory error detector
+==127004== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==127004== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==127004== Command: ./story-step1 story.txt
+==127004== 
+==127004== Invalid write of size 1
+==127004==    at 0x4C329D8: strcat (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==127004==    by 0x108C3D: parse (rand_story.c:28)
+==127004==    by 0x108B0B: main (story-step1.c:18)
+==127004==  Address 0x522eca4 is 0 bytes after a block of size 4 alloc'd
+==127004==    at 0x4C31D2F: realloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==127004==    by 0x108C26: parse (rand_story.c:27)
+==127004==    by 0x108B0B: main (story-step1.c:18)
+==127004== 
+ ca ca
+ca
+
+==127004== 
+==127004== HEAP SUMMARY:
+==127004==     in use at exit: 0 bytes in 0 blocks
+==127004==   total heap usage: 62 allocs, 62 frees, 5,900 bytes allocated
+==127004== 
+==127004== All heap blocks were freed -- no leaks are possible
+==127004== 
+==127004== For counts of detected and suppressed errors, rerun with: -v
+==127004== ERROR SUMMARY: 3 errors from 1 contexts (suppressed: 0 from 0)
+yl730@dku-vcm-508:~/ece551/060_eval2$  valgrind ./story-step1 story.txt 
+==127844== Memcheck, a memory error detector
+==127844== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==127844== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==127844== Command: ./story-step1 story.txt
+==127844== 
+==127844== Invalid write of size 1
+==127844==    at 0x4C329D8: strcat (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==127844==    by 0x108C3D: parse (rand_story.c:28)
+==127844==    by 0x108B0B: main (story-step1.c:18)
+==127844==  Address 0x522eca4 is 0 bytes after a block of size 4 alloc'd
+==127844==    at 0x4C31D2F: realloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==127844==    by 0x108C26: parse (rand_story.c:27)
+==127844==    by 0x108B0B: main (story-step1.c:18)
+==127844== 
+ ca ca
+ca
+
+==127844== 
+==127844== HEAP SUMMARY:
+==127844==     in use at exit: 0 bytes in 0 blocks
+==127844==   total heap usage: 62 allocs, 62 frees, 5,900 bytes allocated
+==127844== 
+==127844== All heap blocks were freed -- no leaks are possible
+==127844== 
+==127844== For counts of detected and suppressed errors, rerun with: -v
+==127844== ERROR SUMMARY: 3 errors from 1 contexts (suppressed: 0 from 0)
+yl730@dku-vcm-508:~/ece551/060_eval2$ emacs rand_story.h
+yl730@dku-vcm-508:~/ece551/060_eval2$ make
+gcc -std=gnu99 -pedantic -Wall -Werror -ggdb3 -c rand_story.c
+rand_story.c:6:44: error: expected declaration specifiers or ‘...’ before ‘,’ token
+ char * story_change(char * story, size_t i,,char c){
+                                            ^
+Makefile:8: recipe for target 'rand_story.o' failed
+make: *** [rand_story.o] Error 1
+yl730@dku-vcm-508:~/ece551/060_eval2$ make
+gcc -std=gnu99 -pedantic -Wall -Werror -ggdb3 -c rand_story.c
+gcc -std=gnu99 -pedantic -Wall -Werror -ggdb3 -c story-step1.c
+gcc -o story-step1 story-step1.o rand_story.o provided.o
+make: *** No rule to make target 'story-step2', needed by 'all'.  Stop.
+rm story-step1.o
+yl730@dku-vcm-508:~/ece551/060_eval2$ ./story-step1 story.txt 
+Once upon a time, there was a cat who lived in a very cat
+cat. 
+
+yl730@dku-vcm-508:~/ece551/060_eval2$ valgrind ./story-step1 story.txt 
+==129678== Memcheck, a memory error detector
+==129678== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==129678== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==129678== Command: ./story-step1 story.txt
+==129678== 
+Once upon a time, there was a cat who lived in a very cat
+cat. 
+
+==129678== 
+==129678== HEAP SUMMARY:
+==129678==     in use at exit: 0 bytes in 0 blocks
+==129678==   total heap usage: 62 allocs, 62 frees, 7,518 bytes allocated
+==129678== 
+==129678== All heap blocks were freed -- no leaks are possible
+==129678== 
+==129678== For counts of detected and suppressed errors, rerun with: -v
+==129678== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+yl730@dku-vcm-508:~/ece551/060_eval2$ make
+gcc -std=gnu99 -pedantic -Wall -Werror -ggdb3 -c rand_story.c
+gcc -std=gnu99 -pedantic -Wall -Werror -ggdb3 -c story-step1.c
+gcc -o story-step1 story-step1.o rand_story.o provided.o
+make: *** No rule to make target 'story-step2', needed by 'all'.  Stop.
+rm story-step1.o
+yl730@dku-vcm-508:~/ece551/060_eval2$ valgrind ./story-step1 story.txt 
+==1313== Memcheck, a memory error detector
+==1313== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==1313== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==1313== Command: ./story-step1 story.txt
+==1313== 
+Once upon a time, there was a cat who lived in a very cat
+cat. 
+
+==1313== 
+==1313== HEAP SUMMARY:
+==1313==     in use at exit: 0 bytes in 0 blocks
+==1313==   total heap usage: 62 allocs, 62 frees, 7,518 bytes allocated
+==1313== 
+==1313== All heap blocks were freed -- no leaks are possible
+==1313== 
+==1313== For counts of detected and suppressed errors, rerun with: -v
+==1313== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+yl730@dku-vcm-508:~/ece551/060_eval2$ valgrind ./story-step1 story2.txt 
+==1394== Memcheck, a memory error detector
+==1394== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==1394== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==1394== Command: ./story-step1 story2.txt
+==1394== 
+Once upon a time, there was a cat. This cat lived in a very
+cat cat. One day, it left its cat cat and met a cat.
+
+==1394== 
+==1394== HEAP SUMMARY:
+==1394==     in use at exit: 0 bytes in 0 blocks
+==1394==   total heap usage: 103 allocs, 103 frees, 11,220 bytes allocated
+==1394== 
+==1394== All heap blocks were freed -- no leaks are possible
+==1394== 
+==1394== For counts of detected and suppressed errors, rerun with: -v
+==1394== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+yl730@dku-vcm-508:~/ece551/060_eval2$ make
+gcc -std=gnu99 -pedantic -Wall -Werror -ggdb3 -c rand_story.c
+gcc -std=gnu99 -pedantic -Wall -Werror -ggdb3 -c story-step1.c
+gcc -o story-step1 story-step1.o rand_story.o provided.o
+make: *** No rule to make target 'story-step2', needed by 'all'.  Stop.
+rm story-step1.o
+yl730@dku-vcm-508:~/ece551/060_eval2$ ./story-step1 story.txt 
+Once upon a time, there was a cat who lived in a very cat
+cat. 
+
+yl730@dku-vcm-508:~/ece551/060_eval2$ ./story-step1 story2.txt 
+Once upon a time, there was a cat. This cat lived in a very
+cat cat. One day, it left its cat cat and met a cat.
+
+yl730@dku-vcm-508:~/ece551/060_eval2$ 

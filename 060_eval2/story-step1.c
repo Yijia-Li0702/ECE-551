@@ -13,12 +13,15 @@ int main(int argc, char ** argv) {
     perror("Could not open file");
     return EXIT_FAILURE;
   }
-  char * story = malloc(sizeof(*story));
+  //char * story = malloc(sizeof(*story));
   catarray_t * cats = NULL;
-  parse(f,story,cats);
+  parse(f,cats);
+  if (fclose(f) != 0) {
+    fprintf(stderr, "Failed to close the input file!");
+    exit(EXIT_FAILURE);
+  }
   //printf("%s\n",story);
-  free(story);
-  
+  //free(story);
   return EXIT_SUCCESS;
 }
   
