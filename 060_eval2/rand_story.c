@@ -58,7 +58,17 @@ void parse(FILE * f,catarray_t * cats){
   free(story);
 }
 
-void store(FILE * f){
+catarray_t * carr_change(catarray_t * carr,const char * curr,const char * ptr){
+   carr->n++;
+   carr->arr = realloc(carr->arr,carr->n*sizeof(*carr->arr));
+   carr->arr[carr->n-1].name = strndup(curr,ptr-curr);
+   carr->arr[carr->n-1].words = malloc(sizeof(*carr->arr[carr->n-1].words));
+   carr->arr[carr->n-1].words[0]=strdup(ptr+1);
+   carr->arr[carr->n-1].n_words = 1;
+   return carr;
+}
+
+catarray_t * store(FILE * f){
   char * curr = NULL;
   size_t sz = 0;
   catarray_t * carr = malloc(sizeof(*carr));
@@ -66,8 +76,8 @@ void store(FILE * f){
   carr->arr = malloc(sizeof(*carr->arr));
 
   while(getline(&curr,&sz,f)>=0){
-    //error if : doesn't exist
     char * ptr = strchr(curr,':');
+    //error if : doesn't exist
     if(ptr == NULL){
       fprintf(stderr, "there's no colon");
       exit(EXIT_FAILURE);
@@ -92,29 +102,12 @@ void store(FILE * f){
     free(part1);
     //create a new category and put it into catarray carr
     if(nothave_name){
-      carr->n++;
-      carr->arr = realloc(carr->arr,carr->n*sizeof(*carr->arr));
-      //carr->arr[carr->n-1].name = malloc(sizeof(*carr->arr[carr->n-1].name));
-      //carr->arr[carr->n-1].name = part1;
-      carr->arr[carr->n-1].name = strndup(curr,ptr-curr);
-      carr->arr[carr->n-1].words = malloc(sizeof(*carr->arr[carr->n-1].words));
-      carr->arr[carr->n-1].words[0]=strdup(ptr+1);
-      carr->arr[carr->n-1].n_words = 1;
+      carr = carr_change(carr,curr,ptr);
       nothave_name = 1;
     }
-     
   }
-  printWords(carr);
- free(curr);
-  for(size_t i = 0; i<carr->n;i++){
-    for(size_t j = 0;j<carr->arr[i].n_words;j++){
-      free(carr->arr[i].words[j]);
-    }
-    free(carr->arr[i].words);
-    free(carr->arr[i].name);
-  }
-  free(carr->arr);
-  free(carr);
+  free(curr);
+  return carr;
 }
 
   
