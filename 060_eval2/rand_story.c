@@ -64,6 +64,7 @@ void store(FILE * f){
   catarray_t * carr = malloc(sizeof(*carr));
   carr->n = 0;
   carr->arr = malloc(sizeof(*carr->arr));
+
   while(getline(&curr,&sz,f)>=0){
     //error if : doesn't exist
     char * ptr = strchr(curr,':');
@@ -76,7 +77,6 @@ void store(FILE * f){
     //check if there is the same category before
     int nothave_name = 1;
     for(size_t i = 0;i < carr->n;i++){
-      //if(0){
       //arr[i] is a pointer or category 
       if(strcmp(carr->arr[i].name,part1)==0){
 	carr->arr[i].n_words++;
@@ -85,26 +85,31 @@ void store(FILE * f){
 	carr->arr[i].words = realloc(carr->arr[i].words, (end+1)*sizeof(*carr->arr[i].words));
 	//put the new word to the end of words
 	carr->arr[i].words[end]=strdup(ptr+1);
-	curr = NULL;
 	nothave_name = 0;
 	continue;
       }
     }
+    free(part1);
     //create a new category and put it into catarray carr
     if(nothave_name){
       carr->n++;
       carr->arr = realloc(carr->arr,carr->n*sizeof(*carr->arr));
-      carr->arr[carr->n-1].name = malloc(sizeof(*carr->arr[carr->n-1].name));
-      carr->arr[carr->n-1].name = part1;
+      //carr->arr[carr->n-1].name = malloc(sizeof(*carr->arr[carr->n-1].name));
+      //carr->arr[carr->n-1].name = part1;
+      carr->arr[carr->n-1].name = strndup(curr,ptr-curr);
       carr->arr[carr->n-1].words = malloc(sizeof(*carr->arr[carr->n-1].words));
       carr->arr[carr->n-1].words[0]=strdup(ptr+1);
       carr->arr[carr->n-1].n_words = 1;
-      curr = NULL;
       nothave_name = 1;
     }
+     
   }
   printWords(carr);
+ free(curr);
   for(size_t i = 0; i<carr->n;i++){
+    for(size_t j = 0;j<carr->arr[i].n_words;j++){
+      free(carr->arr[i].words[j]);
+    }
     free(carr->arr[i].words);
     free(carr->arr[i].name);
   }
