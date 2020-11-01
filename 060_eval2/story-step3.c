@@ -8,8 +8,8 @@ int main(int argc, char ** argv) {
     fprintf(stderr, "not enough input error\n");
     return EXIT_FAILURE;
   }
-  FILE * f = fopen(argv[1], "r");
-  FILE * temp = fopen(argv[2],"r");
+  FILE * f = fopen(argv[2], "r");
+  FILE * temp = fopen(argv[1],"r");
   
   if (f == NULL || temp == NULL) {
     perror("Could not open file");
