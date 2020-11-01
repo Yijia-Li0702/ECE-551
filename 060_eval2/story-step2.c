@@ -14,7 +14,7 @@ int main(int argc, char ** argv) {
     return EXIT_FAILURE;
   }
   catarray_t * carr = store(f);
-   printWords(carr);
+  printWords(carr);
     for(size_t i = 0; i<carr->n;i++){
     for(size_t j = 0;j<carr->arr[i].n_words;j++){
       free(carr->arr[i].words[j]);

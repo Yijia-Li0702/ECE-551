@@ -63,7 +63,8 @@ catarray_t * carr_change(catarray_t * carr,const char * curr,const char * ptr){
    carr->arr = realloc(carr->arr,carr->n*sizeof(*carr->arr));
    carr->arr[carr->n-1].name = strndup(curr,ptr-curr);
    carr->arr[carr->n-1].words = malloc(sizeof(*carr->arr[carr->n-1].words));
-   carr->arr[carr->n-1].words[0]=strdup(ptr+1);
+   size_t len = strlen(ptr+1);
+   carr->arr[carr->n-1].words[0]=strndup(ptr+1,len-1);
    carr->arr[carr->n-1].n_words = 1;
    return carr;
 }
@@ -94,7 +95,8 @@ catarray_t * store(FILE * f){
 	//realloc the space of words to add one more word
 	carr->arr[i].words = realloc(carr->arr[i].words, (end+1)*sizeof(*carr->arr[i].words));
 	//put the new word to the end of words
-	carr->arr[i].words[end]=strdup(ptr+1);
+ size_t len = strlen(ptr+1);
+	carr->arr[i].words[end]=strndup(ptr+1,len-1);
 	nothave_name = 0;
 	continue;
       }
@@ -108,6 +110,80 @@ catarray_t * store(FILE * f){
   }
   free(curr);
   return carr;
+}
+
+void step3_parse(FILE * f,catarray_t * carr){
+  int c;
+  size_t i = 0;
+  char * story = malloc(sizeof(*story));
+  char ** prev = malloc(sizeof(*prev));
+  size_t prev_l = 0;
+  while((c = fgetc(f))!=EOF){
+      //meet the first "_"
+      if(c == '_'){
+	char * blank = malloc(sizeof(*blank));
+	size_t j = 0;
+	while((c = fgetc(f))!=EOF){
+	  if(c == '_'){
+	    break;
+	  }
+	  //check if there isn't a matching underscore in the same line
+	  if(c == '\n'){
+	    fprintf(stderr, "there's no matching underscore\n");
+	    exit(EXIT_FAILURE);
+	  } 
+	  if(c == '\0'){
+	    fprintf(stderr, "there's no matching underscore\n");
+	    exit(EXIT_FAILURE);
+	  }
+	  j = j+1;
+	  blank = story_change(blank,j,c);
+	}
+	//check the category is a number
+	if(blank[0]>=48 && blank[0]<=57&&j == 1){
+     int num = atoi(blank);
+     size_t pos = prev_l-num;
+     i = i + strlen(prev[pos]);
+	  story = realloc(story,(i+1)*sizeof(*story));
+	  story = strcat(story, prev[pos]);
+	  story[i] = '\0';
+     prev_l++;
+     prev = realloc(prev,prev_l*sizeof(*prev));
+     prev[prev_l-1] = strdup(prev[pos]);
+	  free(blank);
+	} else {
+	  for(size_t k= 0;k < carr->n;k++){ 
+	    if(strcmp(carr->arr[k].name,blank)==0){
+	      const char * cat = chooseWord(carr->arr[k].name, carr);
+	      //replace the blank with cat
+             prev_l++;
+             prev = realloc(prev,prev_l*sizeof(*prev));
+	     prev[prev_l-1] = strdup(cat);
+	     //printf("%s\n",prev);
+        //printf("%d",strlen(cat));
+	      i = i + strlen(cat);
+	      story = realloc(story,(i+1)*sizeof(*story));
+	      story = strcat(story, cat);
+	      story[i] = '\0';
+	      free(blank);
+	      break;
+	    }
+	  }
+	}
+      } else {
+	i = i+1;
+	story = story_change(story,i,c);
+      }
+      // printf("%s\n",story);
+      //printf("%ld\n",i);
+  }
+  printf("%s\n",story);
+  free(story);
+}
+
+void step3(FILE * f, FILE * temp){
+  catarray_t * carr = store(temp);
+  step3_parse(f,carr);
 }
 
   

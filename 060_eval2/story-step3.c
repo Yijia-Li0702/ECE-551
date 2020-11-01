@@ -9,15 +9,17 @@ int main(int argc, char ** argv) {
     return EXIT_FAILURE;
   }
   FILE * f = fopen(argv[1], "r");
-  //FILE * temp = fopen(argv[2],"r");
+  FILE * temp = fopen(argv[2],"r");
   
-  if (f == NULL) {
+  if (f == NULL || temp == NULL) {
     perror("Could not open file");
     return EXIT_FAILURE;
   }
-  store(f);
-  
-  if (fclose(f) != 0) {
+  step3(f,temp);
+  //没有close完！
+  //fclose(f);
+  //fclose(temp);
+  if (fclose(f) != 0||fclose(temp)!=0) {
     fprintf(stderr, "Failed to close the input file!");
     exit(EXIT_FAILURE);
   }
