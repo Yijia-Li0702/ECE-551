@@ -112,6 +112,18 @@ catarray_t * store(FILE * f){
   return carr;
 }
 
+char** prev_change(char** prev, size_t prev_l,const char * cat){
+     prev = realloc(prev,prev_l*sizeof(*prev));
+     prev[prev_l-1] = strdup(cat);
+     return prev;
+}
+char * s_change(char * story,size_t i,const char * cat){
+  	  story = realloc(story,(i+1)*sizeof(*story));
+	  story = strcat(story, cat);
+	  story[i] = '\0';
+     return story;
+}
+
 void step3_parse(FILE * f,catarray_t * carr){
   int c;
   size_t i = 0;
@@ -144,27 +156,24 @@ void step3_parse(FILE * f,catarray_t * carr){
      int num = atoi(blank);
      size_t pos = prev_l-num;
      i = i + strlen(prev[pos]);
-	  story = realloc(story,(i+1)*sizeof(*story));
-	  story = strcat(story, prev[pos]);
-	  story[i] = '\0';
-     prev_l++;
-     prev = realloc(prev,prev_l*sizeof(*prev));
-     prev[prev_l-1] = strdup(prev[pos]);
+     story = s_change(story,i,prev[pos]);
+	  //story = realloc(story,(i+1)*sizeof(*story));
+	  //story = strcat(story, prev[pos]);
+	  //story[i] = '\0';
+      prev_l++;
+     prev = prev_change(prev,prev_l,prev[pos]);
 	  free(blank);
 	} else {
 	  for(size_t k= 0;k < carr->n;k++){ 
 	    if(strcmp(carr->arr[k].name,blank)==0){
 	      const char * cat = chooseWord(carr->arr[k].name, carr);
-	      //replace the blank with cat
              prev_l++;
-             prev = realloc(prev,prev_l*sizeof(*prev));
-	     prev[prev_l-1] = strdup(cat);
-	     //printf("%s\n",prev);
-        //printf("%d",strlen(cat));
+             prev = prev_change(prev,prev_l,cat);
 	      i = i + strlen(cat);
-	      story = realloc(story,(i+1)*sizeof(*story));
-	      story = strcat(story, cat);
-	      story[i] = '\0';
+         story = s_change(story,i,cat);
+	      //story = realloc(story,(i+1)*sizeof(*story));
+	      //story = strcat(story, cat);
+	      //story[i] = '\0';
 	      free(blank);
 	      break;
 	    }
