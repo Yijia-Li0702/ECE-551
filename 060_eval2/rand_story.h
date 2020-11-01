@@ -10,6 +10,10 @@ char * story_change(char * story,size_t i,char c);
 void parse(FILE * f, catarray_t * cats);
 catarray_t * carr_change(catarray_t * carr,const char * curr,const char * ptr);
 catarray_t * store(FILE *f);
-void step3_parse(FILE * f,catarray_t * carr);
-void step3(FILE * f, FILE * temp);
+char** prev_change(char** prev, size_t prev_l,const char * cat);
+char * s_change(char * story,size_t i,const char * cat);
+catarray_t * rm_word(catarray_t * carr, int k, const char * cat);
+void step3_parse(FILE * f,catarray_t * carr, int ifremove);
+void step3(FILE * f, FILE * temp, int ifremove);
+
 #endif
