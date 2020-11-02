@@ -140,7 +140,7 @@ catarray_t * rm_word(catarray_t * carr, int k, const char * cat) {
   carr->arr[k].n_words = j;
   return carr;
 }
-
+//this function parse the story to replace blank with word
 void step3_parse(FILE *f, catarray_t *carr, int ifremove) {
   int c;
   size_t i = 0; // length of the new story
@@ -204,6 +204,7 @@ void step3_parse(FILE *f, catarray_t *carr, int ifremove) {
   free(story);
 }
 
+//take two stream and print the correct story
 void step3(FILE *f, FILE *temp, int ifremove) {
   catarray_t *carr = store(temp);
   step3_parse(f, carr, ifremove);
