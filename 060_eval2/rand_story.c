@@ -122,20 +122,22 @@ char *s_change(char *story, size_t i, const char *cat) {
 }
 
 catarray_t * rm_word(catarray_t * carr, int k, const char * cat) {
-  size_t j = 0;
+  size_t j = 0;//length of new words
+  char ** new_wds = malloc(sizeof(*new_wds));
   for (size_t i = 0; i < carr->arr[k].n_words; i++) {
     if (strcmp(carr->arr[k].words[i], cat) != 0) {
-      if (i == j) {
-        j++;
-      } else {
-        carr->arr[k].words[j] = carr->arr[k].words[i];
-        j++;
-      }
-    } else {
-      free(carr->arr[k].words[i]);
+      j++;
+      new_wds=realloc(new_wds,j*sizeof(*new_wds));
+      new_wds[j-1] = strdup(carr->arr[k].words[i]);
     }
   }
-  carr->arr[k].n_words = j++;
+  for(size_t m = 0;m<carr->arr[k].n_words; m++){
+    free(carr->arr[k].words[m]);
+  }
+  free(carr->arr[k].words);
+  //carr->arr[k].words = malloc()
+  carr->arr[k].words = new_wds;
+  carr->arr[k].n_words = j;
   return carr;
 }
 
