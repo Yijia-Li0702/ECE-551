@@ -17,3 +17,5 @@ void step3_parse(FILE * f,catarray_t * carr, int ifremove);
 void step3(FILE * f, FILE * temp, int ifremove);
 
 #endif
+//put free to function 
+//put open file to function 
