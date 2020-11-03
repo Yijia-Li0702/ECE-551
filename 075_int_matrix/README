@@ -25,7 +25,9 @@ You will write the following members of IntMatrix:
     o A constructor that takes the number of rows and columns. It
       should initialize the matrix to have the specified number of
       rows and columns.
-  - IntMatrix(const IntMatrix & rhs);
+  - IntMatrix(
+  
+  const IntMatrix & rhs);
     o A copy constructor, which makes a deep copy.
   - ~IntMatrix();
     o A destructor, which frees any memory the Matrix has allocated.
