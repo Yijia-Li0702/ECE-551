@@ -58,16 +58,15 @@ bool IntArray::operator!=(const IntArray & rhs) const {
 }
 
 std::ostream & operator<<(std::ostream & s, const IntArray & rhs) {
-  int n = rhs.size();
-  if (n == 0) {
+  if (rhs.size() == 0) {
     s << "{}";
   }
   else {
     s << "{";
-    for (int i = 0; i < n - 1; i++) {
+    for (int i = 0; i < rhs.size() - 1; i++) {
       s << rhs[i] << ", ";
     }
-    s << rhs[n - 1] << "}";
+    s << rhs[rhs.size() - 1] << "}";
   }
   return s;
 }
