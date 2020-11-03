@@ -29,11 +29,11 @@ IntArray & IntArray::operator=(const IntArray & rhs) {
   return * this;
 }
 const int & IntArray::operator[](int index) const {
-  assert(index < numElements);
+  assert((index < numElements)&&(index >= 0));
   return data[index];
 }
 int & IntArray::operator[](int index) {
-  assert(index < numElements);
+  assert((index < numElements)&&(index >= 0));
   return data[index];
   
 	  
@@ -56,15 +56,7 @@ bool IntArray::operator==(const IntArray & rhs) const {
 }
 
 bool IntArray::operator!=(const IntArray & rhs) const {
-  if(rhs.size() != numElements){
-    return true;
-    }
-  for(int i = 0; i<rhs.size();i++){
-    if(data[i] != rhs[i]){
-      return true;
-    }
-  }
-  return false;
+  return !(*this == rhs);
 }
 
 std::ostream & operator<<(std::ostream & s, const IntArray & rhs) {
