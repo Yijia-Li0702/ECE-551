@@ -17,7 +17,7 @@ array. It will provide the following functionality:
     o Returns a reference to the appropriate element
     * Note: there are two versions of this operator: 
         int & operator[](int index);
-        const int & operator[](int index) const;
+        const int & operator[](int index) const;s<<
       They will have the exact same code. The difference is that if
       the object they are invoked on is "const", then the second will
       be used, returning a "const" reference, preventing modification
