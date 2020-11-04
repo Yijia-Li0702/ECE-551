@@ -29,8 +29,10 @@ IntMatrix &IntMatrix::operator=(const IntMatrix & rhs) {
     IntArray ** temp = new IntArray*[rhs.numRows];
     for(int i = 0; i<rhs.numRows;i++){
       temp[i]=new IntArray(rhs.numColumns);
-      *temp[i] = *rhs.rows[i];
-      delete rows[i];
+      *temp[i] = *rhs.rows[i];   
+    }
+    for(int j = 0;j<numRows;j++){
+      delete rows[j];
     }
     delete[] rows;
     rows = temp;
@@ -58,7 +60,7 @@ IntArray & IntMatrix::operator[](int index){
 
 
 bool IntMatrix::operator==(const IntMatrix & rhs) const {
-  if(numRows != rhs.getRows() || numColumns!=rhs.getColumns()){
+  if(numRows != rhs.numRows || numColumns!=rhs.numColumns){
     return false;
   }
   for(int i = 0; i<numRows;i++){
@@ -70,10 +72,10 @@ bool IntMatrix::operator==(const IntMatrix & rhs) const {
 }
 
 IntMatrix IntMatrix::operator+(const IntMatrix & rhs) const {
-  assert((numRows == rhs.getRows())&&(numColumns == rhs.getColumns()));
+  assert((numRows == rhs.numRows)&&(numColumns == rhs.numColumns));
   IntMatrix ans(numRows, numColumns);
-  for(int i = 0; i<rhs.numRows;i++){
-    for(int j = 0; j<rhs.numColumns;j++){
+  for(int i = 0; i<numRows;i++){
+    for(int j = 0; j<numColumns;j++){
       (*ans.rows[i])[j] = (*rows[i])[j]+(*rhs.rows[i])[j];
     }
   }
@@ -82,11 +84,12 @@ IntMatrix IntMatrix::operator+(const IntMatrix & rhs) const {
 
 std::ostream & operator<<(std::ostream & s, const IntMatrix & rhs) {
   s<<"[";
-  for(int i = 0; i<rhs.getRows()-1;i++){
+  for (int i = 0; i < rhs.getRows(); i++) {
     s << rhs[i];
-    s << ",\n";
+    if (i != rhs.getRows() - 1) {
+      s << ",\n";
+    }
   }
-  s<<rhs[rhs.getRows()-1];
   s<<"]";
   return s;
 }
