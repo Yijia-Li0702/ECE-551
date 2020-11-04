@@ -13,19 +13,22 @@ IntMatrix::IntMatrix(const IntMatrix & rhs)  {
   numColumns = rhs.numColumns;
   rows = new IntArray*[numRows];
   for(int i = 0; i<numRows;i++){
-    rows[i]=rhs.rows[i];
+    rows[i]=new IntArray(numColumns);
+    *rows[i] = *rhs.rows[i];
   }
   
 }
 IntMatrix::~IntMatrix() {
   for(int i = 0; i<numRows;i++){
-    delete[] rows[i];
+    delete rows[i];
   }
+  delete[] rows;
 }
 IntMatrix &IntMatrix::operator=(const IntMatrix & rhs) {
   if(this != & rhs){
     IntArray ** temp = new IntArray*[rhs.numRows];
     for(int i = 0; i<rhs.numRows;i++){
+      temp[i]=new IntArray(rhs.numColumns);
       *temp[i] = *rhs.rows[i];
       delete rows[i];
     }
@@ -81,7 +84,7 @@ std::ostream & operator<<(std::ostream & s, const IntMatrix & rhs) {
   s<<"[";
   for(int i = 0; i<rhs.getRows()-1;i++){
     s << rhs[i];
-    s << "\n";
+    s << ",\n";
   }
   s<<rhs[rhs.getRows()-1];
   s<<"]";
