@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+//corner case 1._ _have nothing 2.there is a null line
+
 // to update the space of story and put the new char into the story
 char *story_change(char *story, size_t i, char c) {
   story = realloc(story, (i + 1) * sizeof(*story));
@@ -12,13 +14,13 @@ char *story_change(char *story, size_t i, char c) {
   return story;
 }
 // read a file and write the story
-void parse(FILE *f, catarray_t *cats) {
+void step1(FILE *f, catarray_t *cats) {
   int c;
   size_t i = 0;
   // if the char is in "blank",ifwrite = 0
   int ifwrite = 1;
   char *story = malloc(sizeof(*story));
-
+  story[0]='\0';
   while ((c = fgetc(f)) != EOF) {
     // if not in the blank
     if (ifwrite == 1) {
@@ -44,12 +46,13 @@ void parse(FILE *f, catarray_t *cats) {
       // check if there isn't a matching underscore in the same line
       if (c == '\n' || c == '\0') {
         fprintf(stderr, "there's no matching underscore\n");
+        free(story);
         exit(EXIT_FAILURE);
       }
       continue;
     }
   }
-  printf("%s\n", story);
+  printf("%s", story);
   free(story);
 }
 
@@ -64,7 +67,7 @@ catarray_t *carr_change(catarray_t *carr, const char *curr, const char *ptr) {
   return carr;
 }
 
-catarray_t *store(FILE *f) {
+catarray_t * step2(FILE *f) {
   char *curr = NULL;
   size_t sz = 0;
   catarray_t *carr = malloc(sizeof(*carr));
@@ -76,6 +79,10 @@ catarray_t *store(FILE *f) {
     // error if : doesn't exist
     if (ptr == NULL) {
       fprintf(stderr, "there's no colon");
+      exit(EXIT_FAILURE);
+    } 
+    if(ptr == curr){
+      fprintf(stderr, "there's no name");
       exit(EXIT_FAILURE);
     }
     // cut the first part before : as name
@@ -108,12 +115,13 @@ catarray_t *store(FILE *f) {
   return carr;
 }
 
-
+//update the array of previous words
 char **prev_change(char **prev, size_t prev_l, const char *cat) {
   prev = realloc(prev, prev_l * sizeof(*prev));
   prev[prev_l - 1] = strdup(cat);
   return prev;
 }
+//update the story
 char *s_change(char *story, size_t i, const char *cat) {
   story = realloc(story, (i + 1) * sizeof(*story));
   story = strcat(story, cat);
@@ -121,9 +129,10 @@ char *s_change(char *story, size_t i, const char *cat) {
   return story;
 }
 
+//remove the used word from it catagory
 catarray_t * rm_word(catarray_t * carr, int k, const char * cat) {
   size_t j = 0;//length of new words
-  char ** new_wds = malloc(sizeof(*new_wds));
+  char ** new_wds = malloc(sizeof(*new_wds));//create a new words
   for (size_t i = 0; i < carr->arr[k].n_words; i++) {
     if (strcmp(carr->arr[k].words[i], cat) != 0) {
       j++;
@@ -134,20 +143,24 @@ catarray_t * rm_word(catarray_t * carr, int k, const char * cat) {
   for(size_t m = 0;m<carr->arr[k].n_words; m++){
     free(carr->arr[k].words[m]);
   }
-  free(carr->arr[k].words);
-  //carr->arr[k].words = malloc()
+  free(carr->arr[k].words);//free old words
   carr->arr[k].words = new_wds;
-  carr->arr[k].n_words = j;
+  carr->arr[k].n_words = j; //update number of word
   return carr;
 }
 
-//this function parse the story to replace blank with word
+//this function parses the story to replace blank with word
 void step3_parse(FILE *f, catarray_t *carr, int ifremove) {
   int c;
   size_t i = 0; // length of the new story
   char *story = malloc(sizeof(*story));
-  char **prev = malloc(sizeof(*prev));
-  size_t prev_l = 0; // number of the used words
+  story[0]='\0';
+  category_t * prv_ct = malloc(sizeof(*prv_ct));
+  prv_ct->name = NULL;
+  prv_ct->n_words=0;
+  prv_ct->words = malloc(sizeof(*prv_ct->words));
+  //char **prev = malloc(sizeof(*prev));
+  //size_t prev_l = 0; // number of the used words
   while ((c = fgetc(f)) != EOF) {
     // meet the first "_"
     if (c == '_') {
@@ -169,21 +182,22 @@ void step3_parse(FILE *f, catarray_t *carr, int ifremove) {
       // check the category is a number
       if (blank[0] >= 48 && blank[0] <= 57 && j == 1) {
         int num = atoi(blank);
-        size_t pos = prev_l - num; // index of the reused word
-        // reuse previous word
-        i = i + strlen(prev[pos]);
-        story = s_change(story, i, prev[pos]);
-        prev_l++;
-        prev = prev_change(prev, prev_l, prev[pos]);
+        size_t pos = prv_ct->n_words - num; // index of the reused word
+        // reuse previous word, update story and prev
+        i = i + strlen(prv_ct->words[pos]);
+        story = s_change(story, i, prv_ct->words[pos]);
+        prv_ct->n_words++;
+        prv_ct->words = prev_change(prv_ct->words, prv_ct->n_words, prv_ct->words[pos]);
         free(blank);
       } else {
         for (size_t k = 0; k < carr->n; k++) {
           if (strcmp(carr->arr[k].name, blank) == 0) {
             const char *cat = chooseWord(carr->arr[k].name, carr);
-            prev_l++;
-            prev = prev_change(prev, prev_l, cat);
+            //use the randomly chosen word and update story and prev
             i = i + strlen(cat);
             story = s_change(story, i, cat);
+            prv_ct->n_words++;
+            prv_ct->words = prev_change(prv_ct->words, prv_ct->n_words, cat);
             if (ifremove) {
               carr = rm_word(carr, k, cat);
             }
@@ -197,11 +211,12 @@ void step3_parse(FILE *f, catarray_t *carr, int ifremove) {
       story = story_change(story, i, c);
     }
   }
-  for (size_t st = 0; st < prev_l; st++) {
-    free(prev[st]);
+  for (size_t st = 0; st <prv_ct->n_words; st++) {
+    free(prv_ct->words[st]);
   }
-  free(prev);
-  printf("%s\n", story);
+  free(prv_ct->words);
+  free(prv_ct);
+  printf("%s", story);
   free(story);
 }
 
@@ -219,8 +234,8 @@ void free_carr(catarray_t * carr){
 }
 
 //take two stream and print the correct story
-void step3(FILE *f, FILE *temp, int ifremove) {
-  catarray_t *carr = store(temp);
+void step3_4(FILE *f, FILE *temp, int ifremove) {
+  catarray_t *carr = step2(temp);
   step3_parse(f, carr, ifremove);
   free_carr(carr);
 }

@@ -25,7 +25,7 @@ int main(int argc, char ** argv) {
     perror("Could not open file");
     return EXIT_FAILURE;
   }
-  step3(f,temp,ifremove);
+  step3_4(f,temp,ifremove);
    
   int i = fclose(f);
   int j = fclose(temp);

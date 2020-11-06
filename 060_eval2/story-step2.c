@@ -13,7 +13,7 @@ int main(int argc, char ** argv) {
     perror("Could not open file");
     return EXIT_FAILURE;
   }
-  catarray_t * carr = store(f);
+  catarray_t * carr = step2(f);
   printWords(carr);
   free_carr(carr);
   if (fclose(f) != 0) {

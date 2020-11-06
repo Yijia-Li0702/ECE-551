@@ -16,7 +16,7 @@ int main(int argc, char ** argv) {
     return EXIT_FAILURE;
   }
   int ifremove = 0;
-  step3(f,temp,ifremove);
+  step3_4(f,temp,ifremove);
   int i = fclose(f);
   int j = fclose(temp);
   if (i != 0||j!=0) {

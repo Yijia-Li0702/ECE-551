@@ -14,7 +14,7 @@ int main(int argc, char ** argv) {
     return EXIT_FAILURE;
   }
   catarray_t * cats = NULL;
-  parse(f,cats);
+  step1(f,cats);
   if (fclose(f) != 0) {
     fprintf(stderr, "Failed to close the input file!");
     exit(EXIT_FAILURE);
