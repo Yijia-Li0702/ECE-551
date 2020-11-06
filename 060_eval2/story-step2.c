@@ -15,15 +15,7 @@ int main(int argc, char ** argv) {
   }
   catarray_t * carr = store(f);
   printWords(carr);
-    for(size_t i = 0; i<carr->n;i++){
-    for(size_t j = 0;j<carr->arr[i].n_words;j++){
-      free(carr->arr[i].words[j]);
-    }
-    free(carr->arr[i].words);
-    free(carr->arr[i].name);
-  }
-  free(carr->arr);
-  free(carr);
+  free_carr(carr);
   if (fclose(f) != 0) {
     fprintf(stderr, "Failed to close the input file!");
     exit(EXIT_FAILURE);

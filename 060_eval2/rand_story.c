@@ -7,9 +7,8 @@
 char *story_change(char *story, size_t i, char c) {
   story = realloc(story, (i + 1) * sizeof(*story));
   // put the new char into the story
-  story[i - 1] = c;
-  // the end of the line
-  story[i] = '\0';
+  story[i - 1] = c; 
+  story[i] = '\0'; // the end of the line
   return story;
 }
 // read a file and write the story
@@ -109,6 +108,7 @@ catarray_t *store(FILE *f) {
   return carr;
 }
 
+
 char **prev_change(char **prev, size_t prev_l, const char *cat) {
   prev = realloc(prev, prev_l * sizeof(*prev));
   prev[prev_l - 1] = strdup(cat);
@@ -140,6 +140,7 @@ catarray_t * rm_word(catarray_t * carr, int k, const char * cat) {
   carr->arr[k].n_words = j;
   return carr;
 }
+
 //this function parse the story to replace blank with word
 void step3_parse(FILE *f, catarray_t *carr, int ifremove) {
   int c;
@@ -204,11 +205,9 @@ void step3_parse(FILE *f, catarray_t *carr, int ifremove) {
   free(story);
 }
 
-//take two stream and print the correct story
-void step3(FILE *f, FILE *temp, int ifremove) {
-  catarray_t *carr = store(temp);
-  step3_parse(f, carr, ifremove);
-  for (size_t i = 0; i < carr->n; i++) {
+//free space malloced by catarray_t * carr
+void free_carr(catarray_t * carr){
+    for (size_t i = 0; i < carr->n; i++) {
     for (size_t j = 0; j < carr->arr[i].n_words; j++) {
       free(carr->arr[i].words[j]);
     }
@@ -217,5 +216,12 @@ void step3(FILE *f, FILE *temp, int ifremove) {
   }
   free(carr->arr);
   free(carr);
+}
+
+//take two stream and print the correct story
+void step3(FILE *f, FILE *temp, int ifremove) {
+  catarray_t *carr = store(temp);
+  step3_parse(f, carr, ifremove);
+  free_carr(carr);
 }
   

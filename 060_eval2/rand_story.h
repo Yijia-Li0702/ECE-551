@@ -14,6 +14,7 @@ char** prev_change(char** prev, size_t prev_l,const char * cat);
 char * s_change(char * story,size_t i,const char * cat);
 catarray_t * rm_word(catarray_t * carr, int k, const char * cat);
 void step3_parse(FILE * f,catarray_t * carr, int ifremove);
+void free_carr(catarray_t * carr);
 void step3(FILE * f, FILE * temp, int ifremove);
 
 #endif
