@@ -74,8 +74,8 @@ void checkPtr(char * ptr,char * curr){
 }
 
 /*This program should read from the file and 
-store the words into a catarray_t and print them using
-the provided function printWords.*/
+  store the words into a catarray_t and print them using
+  the provided function printWords.*/
 catarray_t * step2(FILE *f) {
   char *curr = NULL;
   size_t sz = 0;
