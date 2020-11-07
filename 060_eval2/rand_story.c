@@ -2,10 +2,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include <ctype.h>
 
 // this function is to update the space of story and put the new char into the story
-char *story_change(char *story, size_t i, char c) {
+char * story_change(char *story, size_t i, char c) {
   story = realloc(story, (i + 1) * sizeof(*story));
   // put the new char into the story
   story[i - 1] = c; 
@@ -201,19 +201,18 @@ void step3_parse(FILE *f, catarray_t *carr, int ifremove) {
         j = j + 1;
         blank = story_change(blank, j, c);
       }
-      if (blank[0] >= 48 && blank[0] <= 57 && j == 1) {
-        int num = atoi(blank);
-        if(num > prv_ct->n_words||num<=0){
-          report_err("there is not a valid integer\n");
+      
+      int isname = 0;
+      for(size_t sz = 0;sz<j;sz++){
+        if(isdigit(blank[sz])==0){
+          isname = 1;
+          //printf("%d\n",blank[sz]);
+          //printf("%ld\n",sz);
+          break;
         }
-        size_t pos = prv_ct->n_words - num; // index of the reused word
-        // reuse previous word, update story and prev
-        i = i + strlen(prv_ct->words[pos]);
-        story = update_ps(prv_ct,story,i,prv_ct->words[pos]);
-        ifvalid = 1;
-        free(blank);
-      } else {
-        for (size_t k = 0; k < carr->n; k++) {
+      }
+      if(isname == 1 || j == 0){
+	for (size_t k = 0; k < carr->n; k++) {
 	  //find the same name before
           if (strcmp(carr->arr[k].name, blank) == 0) {
             const char *cat = chooseWord(carr->arr[k].name, carr);
@@ -227,7 +226,21 @@ void step3_parse(FILE *f, catarray_t *carr, int ifremove) {
             free(blank);
             break;
           }
-        }  
+        }
+        isname = 0;
+      }
+      else {
+        int num = atoi(blank);
+        
+        if(num > prv_ct->n_words||num<=0){
+          report_err("there is not a valid integer\n");
+        }
+        size_t pos = prv_ct->n_words - num; // index of the reused word
+        // reuse previous word, update story and prev
+        i = i + strlen(prv_ct->words[pos]);
+        story = update_ps(prv_ct,story,i,prv_ct->words[pos]);
+        ifvalid = 1;
+        free(blank);
       }
       //if there's no valid word to replace the blank
       if(!ifvalid){
