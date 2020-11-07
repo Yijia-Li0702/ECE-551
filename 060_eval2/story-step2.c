@@ -8,17 +8,10 @@ int main(int argc, char ** argv) {
     fprintf(stderr, "not enough input error\n");
     return EXIT_FAILURE;
   }
-  FILE * f = fopen(argv[1], "r");
-  if (f == NULL) {
-    perror("Could not open file");
-    return EXIT_FAILURE;
-  }
+  FILE * f = tryop(argv[1]);
   catarray_t * carr = step2(f);
   printWords(carr);
   free_carr(carr);
-  if (fclose(f) != 0) {
-    fprintf(stderr, "Failed to close the input file!");
-    exit(EXIT_FAILURE);
-  }
+  trycls(f);
   return EXIT_SUCCESS;
 }

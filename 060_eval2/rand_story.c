@@ -3,9 +3,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-//corner case 1._ _have nothing 2.there is a null line
 
-// to update the space of story and put the new char into the story
+// this function is to update the space of story and put the new char into the story
 char *story_change(char *story, size_t i, char c) {
   story = realloc(story, (i + 1) * sizeof(*story));
   // put the new char into the story
@@ -13,6 +12,7 @@ char *story_change(char *story, size_t i, char c) {
   story[i] = '\0'; // the end of the line
   return story;
 }
+
 // read a file and write the story
 void step1(FILE *f, catarray_t *cats) {
   int c;
@@ -45,9 +45,7 @@ void step1(FILE *f, catarray_t *cats) {
       }
       // check if there isn't a matching underscore in the same line
       if (c == '\n' || c == '\0') {
-        fprintf(stderr, "there's no matching underscore\n");
-        free(story);
-        exit(EXIT_FAILURE);
+        report_err("there's no matching underscore\n");
       }
       continue;
     }
@@ -56,6 +54,7 @@ void step1(FILE *f, catarray_t *cats) {
   free(story);
 }
 
+//this function is to add words to a catarray
 catarray_t *carr_change(catarray_t *carr, const char *curr, const char *ptr) {
   carr->n++;
   carr->arr = realloc(carr->arr, carr->n * sizeof(*carr->arr));
@@ -67,24 +66,26 @@ catarray_t *carr_change(catarray_t *carr, const char *curr, const char *ptr) {
   return carr;
 }
 
+//check if the pointer is NULL
+void checkPtr(char * ptr,char * curr){
+  if (ptr == NULL) {
+    report_err("there's no colon\n");
+  } 
+}
+
+/*This program should read from the file and 
+store the words into a catarray_t and print them using
+the provided function printWords.*/
 catarray_t * step2(FILE *f) {
   char *curr = NULL;
   size_t sz = 0;
   catarray_t *carr = malloc(sizeof(*carr));
   carr->n = 0;
   carr->arr = malloc(sizeof(*carr->arr));
-
   while (getline(&curr, &sz, f) >= 0) {
     char *ptr = strchr(curr, ':');
     // error if : doesn't exist
-    if (ptr == NULL) {
-      fprintf(stderr, "there's no colon");
-      exit(EXIT_FAILURE);
-    } 
-    if(ptr == curr){
-      fprintf(stderr, "there's no name");
-      exit(EXIT_FAILURE);
-    }
+    checkPtr(ptr,curr);
     // cut the first part before : as name
     char *part1 = strndup(curr, ptr - curr);
     // check if there is the same category before
@@ -149,6 +150,30 @@ catarray_t * rm_word(catarray_t * carr, int k, const char * cat) {
   return carr;
 }
 
+//update prv_ct and story
+char * update_ps(category_t * prv_ct,char *story,size_t i,const char * cat){
+  story = s_change(story, i, cat);
+  prv_ct->n_words++;
+  prv_ct->words = prev_change(prv_ct->words, prv_ct->n_words, cat);
+  return story;
+}
+
+//free the catagory_t
+void free_catag(category_t * prv_ct){
+  for (size_t st = 0; st <prv_ct->n_words; st++) {
+    free(prv_ct->words[st]);
+  }
+  free(prv_ct->words);
+  free(prv_ct);
+}
+
+//check if the char c is equal to '\n' or '\0'
+void checkC(char c){
+  if (c == '\n' || c == '\0') {
+    report_err("there's no matching underscore\n");
+  }
+}
+
 //this function parses the story to replace blank with word
 void step3_parse(FILE *f, catarray_t *carr, int ifremove) {
   int c;
@@ -159,12 +184,12 @@ void step3_parse(FILE *f, catarray_t *carr, int ifremove) {
   prv_ct->name = NULL;
   prv_ct->n_words=0;
   prv_ct->words = malloc(sizeof(*prv_ct->words));
-  //char **prev = malloc(sizeof(*prev));
-  //size_t prev_l = 0; // number of the used words
   while ((c = fgetc(f)) != EOF) {
     // meet the first "_"
     if (c == '_') {
-      char *blank = malloc(sizeof(*blank)); // string in the blank
+      char *blank = malloc(sizeof(*blank)); 
+      int ifvalid = 0;
+      blank[0] = '\0';// string in the blank
       size_t j = 0;
       // enter a blank
       while ((c = fgetc(f)) != EOF) {
@@ -172,57 +197,55 @@ void step3_parse(FILE *f, catarray_t *carr, int ifremove) {
           break;
         }
         // check if there isn't a matching underscore in the same line
-        if (c == '\n' || c == '\0') {
-          fprintf(stderr, "there's no matching underscore\n");
-          exit(EXIT_FAILURE);
-        }
+        checkC(c);
         j = j + 1;
         blank = story_change(blank, j, c);
       }
-      // check the category is a number
       if (blank[0] >= 48 && blank[0] <= 57 && j == 1) {
         int num = atoi(blank);
+        if(num > prv_ct->n_words||num<=0){
+          report_err("there is not a valid integer\n");
+        }
         size_t pos = prv_ct->n_words - num; // index of the reused word
         // reuse previous word, update story and prev
         i = i + strlen(prv_ct->words[pos]);
-        story = s_change(story, i, prv_ct->words[pos]);
-        prv_ct->n_words++;
-        prv_ct->words = prev_change(prv_ct->words, prv_ct->n_words, prv_ct->words[pos]);
+        story = update_ps(prv_ct,story,i,prv_ct->words[pos]);
+        ifvalid = 1;
         free(blank);
       } else {
         for (size_t k = 0; k < carr->n; k++) {
+	  //find the same name before
           if (strcmp(carr->arr[k].name, blank) == 0) {
             const char *cat = chooseWord(carr->arr[k].name, carr);
             //use the randomly chosen word and update story and prev
             i = i + strlen(cat);
-            story = s_change(story, i, cat);
-            prv_ct->n_words++;
-            prv_ct->words = prev_change(prv_ct->words, prv_ct->n_words, cat);
+            story = update_ps(prv_ct,story,i,cat);
+            ifvalid = 1;
             if (ifremove) {
               carr = rm_word(carr, k, cat);
             }
             free(blank);
             break;
           }
-        }
+        }  
+      }
+      //if there's no valid word to replace the blank
+      if(!ifvalid){
+        report_err("there is not a valid catagory name\n");
       }
     } else {
       i = i + 1;
       story = story_change(story, i, c);
     }
   }
-  for (size_t st = 0; st <prv_ct->n_words; st++) {
-    free(prv_ct->words[st]);
-  }
-  free(prv_ct->words);
-  free(prv_ct);
+  free_catag(prv_ct);
   printf("%s", story);
   free(story);
 }
 
 //free space malloced by catarray_t * carr
 void free_carr(catarray_t * carr){
-    for (size_t i = 0; i < carr->n; i++) {
+  for (size_t i = 0; i < carr->n; i++) {
     for (size_t j = 0; j < carr->arr[i].n_words; j++) {
       free(carr->arr[i].words[j]);
     }
@@ -239,4 +262,26 @@ void step3_4(FILE *f, FILE *temp, int ifremove) {
   step3_parse(f, carr, ifremove);
   free_carr(carr);
 }
-  
+
+//open a file
+FILE * tryop(char * arg){
+  FILE * f = fopen(arg, "r");
+  if (f == NULL) {
+    report_err("Could not open file");
+  }
+  return f;
+}
+
+//close a file
+void trycls(FILE *f){
+  if (fclose(f) != 0) {
+    report_err("Failed to close the input file!");
+  }
+}
+
+//report error
+void report_err(const char * report){
+  fprintf(stderr,"%s", report);
+  exit(EXIT_FAILURE);
+}
+

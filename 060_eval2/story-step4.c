@@ -11,27 +11,23 @@ int main(int argc, char ** argv) {
   int ifremove;
   FILE * f;
   FILE * temp;
+  //check if there's -n in argument
   if(argc == 3){
     ifremove = 0;
-    f = fopen(argv[2], "r");
-    temp = fopen(argv[1],"r");
+    f = tryop(argv[2]);
+    temp = tryop(argv[1]);
   } else if(argc == 4){
     ifremove = 1;
-    //check if the second argument isn't -n???????
-    f = fopen(argv[3], "r");
-    temp = fopen(argv[2],"r");
-  }
-  if (f == NULL || temp == NULL) {
-    perror("Could not open file");
-    return EXIT_FAILURE;
+    //check if the second argument is -n
+    if(strcmp(argv[1],"-n")!=0){
+      report_err("invalid command line argument\n");
+    }
+    f = tryop(argv[3]);
+    temp = tryop(argv[2]);
   }
   step3_4(f,temp,ifremove);
-   
-  int i = fclose(f);
-  int j = fclose(temp);
-  if (i != 0||j!=0) {
-    fprintf(stderr, "Failed to close the input file!");
-    exit(EXIT_FAILURE);
-  }
+  //close file
+  trycls(f);
+  trycls(temp);
   return EXIT_SUCCESS;
 }

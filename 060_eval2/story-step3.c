@@ -8,20 +8,12 @@ int main(int argc, char ** argv) {
     fprintf(stderr, "not enough input error\n");
     return EXIT_FAILURE;
   }
-  FILE * f = fopen(argv[2], "r");
-  FILE * temp = fopen(argv[1],"r");
+  FILE * f =  tryop(argv[2]);
+  FILE * temp =  tryop(argv[1]);
   
-  if (f == NULL || temp == NULL) {
-    perror("Could not open file");
-    return EXIT_FAILURE;
-  }
   int ifremove = 0;
-  step3_4(f,temp,ifremove);
-  int i = fclose(f);
-  int j = fclose(temp);
-  if (i != 0||j!=0) {
-    fprintf(stderr, "Failed to close the input file!");
-    exit(EXIT_FAILURE);
-  }
+  step3_4(f,temp,ifremove);  
+  trycls(f);
+  trycls(temp);
   return EXIT_SUCCESS;
 }
