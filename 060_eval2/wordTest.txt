@@ -1,6 +1,6 @@
 animal:dragon
 animal:walrus
-2b3:lived
+:liv:ed
 adjective:peculiar
 adjective:scary
 adjective:peaceful
