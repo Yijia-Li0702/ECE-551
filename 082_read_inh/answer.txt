@@ -19,4 +19,5 @@ Leon purrs.
 ~Animal(Leon)
 ~Cat(Fluffy)
 Fluffy purrs.
-~Animal(Fluffy)x
+~Animal(Fluffy)
+
