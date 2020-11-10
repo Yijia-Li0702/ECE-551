@@ -45,7 +45,7 @@ class PlusExpression : public Expression{
   delete rhs;
   }
   virtual long evaluate() const{
-  long ans = lhs.evaluate()+rhs.evaluate();
+   long ans = lhs->evaluate()+rhs->evaluate();
    return ans;
   }
 };
@@ -66,7 +66,7 @@ class MinusExpression : public Expression{
   delete rhs;
   }
    virtual long evaluate() const{
-   long ans = lhs.evaluate()-rhs.evaluate();
+    long ans = lhs->evaluate()-rhs->evaluate();
    return ans;
    }
  };
@@ -88,7 +88,7 @@ class MinusExpression : public Expression{
   delete rhs;
   }
    virtual long evaluate() const{
-   long ans = lhs.evaluate()*rhs.evaluate();
+   long ans = lhs->evaluate()*rhs->evaluate();
    return ans;
    }
  };
@@ -111,7 +111,7 @@ class MinusExpression : public Expression{
   delete rhs;
   }
   virtual long evaluate() const{
-  long ans = lhs.evaluate()/rhs.evaluate();
+  long ans = lhs->evaluate()/rhs->evaluate();
    return ans;
   }
  };
