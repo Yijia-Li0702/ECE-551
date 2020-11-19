@@ -58,8 +58,6 @@ public:
       } else{
        tail = (*ptr)->prev;  
        }
-       //if(*ptr->prev!=NULL){
-       //*ptr->prev->next = *ptr->next;}
        (*ptr) = (*ptr)->next;
        size--;
        return true;

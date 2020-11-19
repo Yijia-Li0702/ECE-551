@@ -6,4 +6,13 @@ public:
   virtual R invoke(A arg) = 0;
   virtual ~Function() {}
 };
+
+
+
+
+
+
+
 #endif
+
+
