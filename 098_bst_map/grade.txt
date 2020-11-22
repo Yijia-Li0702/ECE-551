@@ -1,0 +1,293 @@
+Grading at 11/22/2020:12:17:23.480854
+For commit ID 6e31c011969f959d6ae6fd96b7d92c0f0d26d796
+Grading at Sun Nov 22 20:17:22 CST 2020
+-----------------------------------------------
+testcase 1 : Testing with BstMap<int,int>
+...compiling...
+In file included from 89-tester.cpp:1:0:
+bstmap.h: In instantiation of ‘void BstMap<K, V>::add(const K&, const V&) [with K = int; V = int]’:
+89-tester.cpp:197:1:   required from here
+bstmap.h:31:11: error: no matching function for call to ‘BstMap<int, int>::Node::Node(const int&, const int&, NULL, NULL)’
+     ptr = new Node(key,value,NULL,NULL);
+           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+bstmap.h:16:5: note: candidate: BstMap<K, V>::Node::Node(K, V) [with K = int; V = int]
+     Node(K k, V v) : key(k), value(v), left(NULL), right(NULL) {}
+     ^~~~
+bstmap.h:16:5: note:   candidate expects 2 arguments, 4 provided
+bstmap.h:15:5: note: candidate: BstMap<K, V>::Node::Node() [with K = int; V = int]
+     Node() : key(0), value(0), left(NULL), right(NULL) {}
+     ^~~~
+bstmap.h:15:5: note:   candidate expects 0 arguments, 4 provided
+bstmap.h:9:9: note: candidate: BstMap<int, int>::Node::Node(const BstMap<int, int>::Node&)
+   class Node {
+         ^~~~
+bstmap.h:9:9: note:   candidate expects 1 argument, 4 provided
+bstmap.h: In instantiation of ‘void BstMap<K, V>::remove(const K&) [with K = int; V = int]’:
+89-tester.cpp:197:1:   required from here
+bstmap.h:82:23: error: statement has no effect [-Werror=unused-value]
+           ptr1->right == NULL;
+                       ^
+bstmap.h: In member function ‘const V& BstMap<K, V>::lookup(const K&) const [with K = int; V = int]’:
+bstmap.h:45:3: error: control reaches end of non-void function [-Werror=return-type]
+   }
+   ^
+cc1plus: all warnings being treated as errors
+The code did not compile.  This test failed.
+-----------------------------------------------
+testcase 2 : Testing with BstMap<int,std::string>
+...compiling...
+In file included from 89-tester.cpp:1:0:
+bstmap.h: In instantiation of ‘void BstMap<K, V>::add(const K&, const V&) [with K = int; V = std::__cxx11::basic_string<char>]’:
+89-tester.cpp:197:1:   required from here
+bstmap.h:31:11: error: no matching function for call to ‘BstMap<int, std::__cxx11::basic_string<char> >::Node::Node(const int&, const std::__cxx11::basic_string<char>&, NULL, NULL)’
+     ptr = new Node(key,value,NULL,NULL);
+           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+bstmap.h:16:5: note: candidate: BstMap<K, V>::Node::Node(K, V) [with K = int; V = std::__cxx11::basic_string<char>]
+     Node(K k, V v) : key(k), value(v), left(NULL), right(NULL) {}
+     ^~~~
+bstmap.h:16:5: note:   candidate expects 2 arguments, 4 provided
+bstmap.h:15:5: note: candidate: BstMap<K, V>::Node::Node() [with K = int; V = std::__cxx11::basic_string<char>]
+     Node() : key(0), value(0), left(NULL), right(NULL) {}
+     ^~~~
+bstmap.h:15:5: note:   candidate expects 0 arguments, 4 provided
+bstmap.h:9:9: note: candidate: BstMap<int, std::__cxx11::basic_string<char> >::Node::Node(const BstMap<int, std::__cxx11::basic_string<char> >::Node&)
+   class Node {
+         ^~~~
+bstmap.h:9:9: note:   candidate expects 1 argument, 4 provided
+bstmap.h: In instantiation of ‘void BstMap<K, V>::remove(const K&) [with K = int; V = std::__cxx11::basic_string<char>]’:
+89-tester.cpp:197:1:   required from here
+bstmap.h:82:23: error: statement has no effect [-Werror=unused-value]
+           ptr1->right == NULL;
+                       ^
+bstmap.h: In member function ‘const V& BstMap<K, V>::lookup(const K&) const [with K = int; V = std::__cxx11::basic_string<char>]’:
+bstmap.h:45:3: error: control reaches end of non-void function [-Werror=return-type]
+   }
+   ^
+cc1plus: all warnings being treated as errors
+The code did not compile.  This test failed.
+-----------------------------------------------
+testcase 3 : Testing with BstMap<int,(a custom class we wrote)>
+...compiling...
+In file included from 89-tester.cpp:1:0:
+bstmap.h: In instantiation of ‘void BstMap<K, V>::add(const K&, const V&) [with K = int; V = Tester]’:
+89-tester.cpp:197:1:   required from here
+bstmap.h:31:11: error: no matching function for call to ‘BstMap<int, Tester>::Node::Node(const int&, const Tester&, NULL, NULL)’
+     ptr = new Node(key,value,NULL,NULL);
+           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+bstmap.h:16:5: note: candidate: BstMap<K, V>::Node::Node(K, V) [with K = int; V = Tester]
+     Node(K k, V v) : key(k), value(v), left(NULL), right(NULL) {}
+     ^~~~
+bstmap.h:16:5: note:   candidate expects 2 arguments, 4 provided
+bstmap.h:15:5: note: candidate: BstMap<K, V>::Node::Node() [with K = int; V = Tester]
+     Node() : key(0), value(0), left(NULL), right(NULL) {}
+     ^~~~
+bstmap.h:15:5: note:   candidate expects 0 arguments, 4 provided
+bstmap.h:9:9: note: candidate: BstMap<int, Tester>::Node::Node(const BstMap<int, Tester>::Node&)
+   class Node {
+         ^~~~
+bstmap.h:9:9: note:   candidate expects 1 argument, 4 provided
+bstmap.h: In instantiation of ‘void BstMap<K, V>::remove(const K&) [with K = int; V = Tester]’:
+89-tester.cpp:197:1:   required from here
+bstmap.h:82:23: error: statement has no effect [-Werror=unused-value]
+           ptr1->right == NULL;
+                       ^
+bstmap.h: In member function ‘const V& BstMap<K, V>::lookup(const K&) const [with K = int; V = Tester]’:
+bstmap.h:45:3: error: control reaches end of non-void function [-Werror=return-type]
+   }
+   ^
+cc1plus: all warnings being treated as errors
+The code did not compile.  This test failed.
+-----------------------------------------------
+testcase 4 : Testing with BstMap<std::string,int>
+...compiling...
+In file included from 89-tester.cpp:1:0:
+bstmap.h: In instantiation of ‘void BstMap<K, V>::add(const K&, const V&) [with K = std::__cxx11::basic_string<char>; V = int]’:
+89-tester.cpp:197:1:   required from here
+bstmap.h:31:11: error: no matching function for call to ‘BstMap<std::__cxx11::basic_string<char>, int>::Node::Node(const std::__cxx11::basic_string<char>&, const int&, NULL, NULL)’
+     ptr = new Node(key,value,NULL,NULL);
+           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+bstmap.h:16:5: note: candidate: BstMap<K, V>::Node::Node(K, V) [with K = std::__cxx11::basic_string<char>; V = int]
+     Node(K k, V v) : key(k), value(v), left(NULL), right(NULL) {}
+     ^~~~
+bstmap.h:16:5: note:   candidate expects 2 arguments, 4 provided
+bstmap.h:15:5: note: candidate: BstMap<K, V>::Node::Node() [with K = std::__cxx11::basic_string<char>; V = int]
+     Node() : key(0), value(0), left(NULL), right(NULL) {}
+     ^~~~
+bstmap.h:15:5: note:   candidate expects 0 arguments, 4 provided
+bstmap.h:9:9: note: candidate: BstMap<std::__cxx11::basic_string<char>, int>::Node::Node(const BstMap<std::__cxx11::basic_string<char>, int>::Node&)
+   class Node {
+         ^~~~
+bstmap.h:9:9: note:   candidate expects 1 argument, 4 provided
+bstmap.h: In instantiation of ‘void BstMap<K, V>::remove(const K&) [with K = std::__cxx11::basic_string<char>; V = int]’:
+89-tester.cpp:197:1:   required from here
+bstmap.h:82:23: error: statement has no effect [-Werror=unused-value]
+           ptr1->right == NULL;
+                       ^
+bstmap.h: In member function ‘const V& BstMap<K, V>::lookup(const K&) const [with K = std::__cxx11::basic_string<char>; V = int]’:
+bstmap.h:45:3: error: control reaches end of non-void function [-Werror=return-type]
+   }
+   ^
+cc1plus: all warnings being treated as errors
+The code did not compile.  This test failed.
+-----------------------------------------------
+testcase 5 : Testing with BstMap<std::string,std::string>
+...compiling...
+In file included from 89-tester.cpp:1:0:
+bstmap.h: In instantiation of ‘void BstMap<K, V>::add(const K&, const V&) [with K = std::__cxx11::basic_string<char>; V = std::__cxx11::basic_string<char>]’:
+89-tester.cpp:197:1:   required from here
+bstmap.h:31:11: error: no matching function for call to ‘BstMap<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> >::Node::Node(const std::__cxx11::basic_string<char>&, const std::__cxx11::basic_string<char>&, NULL, NULL)’
+     ptr = new Node(key,value,NULL,NULL);
+           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+bstmap.h:16:5: note: candidate: BstMap<K, V>::Node::Node(K, V) [with K = std::__cxx11::basic_string<char>; V = std::__cxx11::basic_string<char>]
+     Node(K k, V v) : key(k), value(v), left(NULL), right(NULL) {}
+     ^~~~
+bstmap.h:16:5: note:   candidate expects 2 arguments, 4 provided
+bstmap.h:15:5: note: candidate: BstMap<K, V>::Node::Node() [with K = std::__cxx11::basic_string<char>; V = std::__cxx11::basic_string<char>]
+     Node() : key(0), value(0), left(NULL), right(NULL) {}
+     ^~~~
+bstmap.h:15:5: note:   candidate expects 0 arguments, 4 provided
+bstmap.h:9:9: note: candidate: BstMap<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> >::Node::Node(const BstMap<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> >::Node&)
+   class Node {
+         ^~~~
+bstmap.h:9:9: note:   candidate expects 1 argument, 4 provided
+bstmap.h: In instantiation of ‘void BstMap<K, V>::remove(const K&) [with K = std::__cxx11::basic_string<char>; V = std::__cxx11::basic_string<char>]’:
+89-tester.cpp:197:1:   required from here
+bstmap.h:82:23: error: statement has no effect [-Werror=unused-value]
+           ptr1->right == NULL;
+                       ^
+bstmap.h: In member function ‘const V& BstMap<K, V>::lookup(const K&) const [with K = std::__cxx11::basic_string<char>; V = std::__cxx11::basic_string<char>]’:
+bstmap.h:45:3: error: control reaches end of non-void function [-Werror=return-type]
+   }
+   ^
+cc1plus: all warnings being treated as errors
+The code did not compile.  This test failed.
+-----------------------------------------------
+testcase 6 : Testing with BstMap<std::string,(a custom class we wrote)>
+...compiling...
+In file included from 89-tester.cpp:1:0:
+bstmap.h: In instantiation of ‘void BstMap<K, V>::add(const K&, const V&) [with K = std::__cxx11::basic_string<char>; V = Tester]’:
+89-tester.cpp:197:1:   required from here
+bstmap.h:31:11: error: no matching function for call to ‘BstMap<std::__cxx11::basic_string<char>, Tester>::Node::Node(const std::__cxx11::basic_string<char>&, const Tester&, NULL, NULL)’
+     ptr = new Node(key,value,NULL,NULL);
+           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+bstmap.h:16:5: note: candidate: BstMap<K, V>::Node::Node(K, V) [with K = std::__cxx11::basic_string<char>; V = Tester]
+     Node(K k, V v) : key(k), value(v), left(NULL), right(NULL) {}
+     ^~~~
+bstmap.h:16:5: note:   candidate expects 2 arguments, 4 provided
+bstmap.h:15:5: note: candidate: BstMap<K, V>::Node::Node() [with K = std::__cxx11::basic_string<char>; V = Tester]
+     Node() : key(0), value(0), left(NULL), right(NULL) {}
+     ^~~~
+bstmap.h:15:5: note:   candidate expects 0 arguments, 4 provided
+bstmap.h:9:9: note: candidate: BstMap<std::__cxx11::basic_string<char>, Tester>::Node::Node(const BstMap<std::__cxx11::basic_string<char>, Tester>::Node&)
+   class Node {
+         ^~~~
+bstmap.h:9:9: note:   candidate expects 1 argument, 4 provided
+bstmap.h: In instantiation of ‘void BstMap<K, V>::remove(const K&) [with K = std::__cxx11::basic_string<char>; V = Tester]’:
+89-tester.cpp:197:1:   required from here
+bstmap.h:82:23: error: statement has no effect [-Werror=unused-value]
+           ptr1->right == NULL;
+                       ^
+bstmap.h: In member function ‘const V& BstMap<K, V>::lookup(const K&) const [with K = std::__cxx11::basic_string<char>; V = Tester]’:
+bstmap.h:45:3: error: control reaches end of non-void function [-Werror=return-type]
+   }
+   ^
+cc1plus: all warnings being treated as errors
+The code did not compile.  This test failed.
+-----------------------------------------------
+testcase 7 : Testing with BstMap<(a custom class we wrote),int>
+...compiling...
+In file included from 89-tester.cpp:1:0:
+bstmap.h: In instantiation of ‘void BstMap<K, V>::add(const K&, const V&) [with K = Tester; V = int]’:
+89-tester.cpp:197:1:   required from here
+bstmap.h:31:11: error: no matching function for call to ‘BstMap<Tester, int>::Node::Node(const Tester&, const int&, NULL, NULL)’
+     ptr = new Node(key,value,NULL,NULL);
+           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+bstmap.h:16:5: note: candidate: BstMap<K, V>::Node::Node(K, V) [with K = Tester; V = int]
+     Node(K k, V v) : key(k), value(v), left(NULL), right(NULL) {}
+     ^~~~
+bstmap.h:16:5: note:   candidate expects 2 arguments, 4 provided
+bstmap.h:15:5: note: candidate: BstMap<K, V>::Node::Node() [with K = Tester; V = int]
+     Node() : key(0), value(0), left(NULL), right(NULL) {}
+     ^~~~
+bstmap.h:15:5: note:   candidate expects 0 arguments, 4 provided
+bstmap.h:9:9: note: candidate: BstMap<Tester, int>::Node::Node(const BstMap<Tester, int>::Node&)
+   class Node {
+         ^~~~
+bstmap.h:9:9: note:   candidate expects 1 argument, 4 provided
+bstmap.h: In instantiation of ‘void BstMap<K, V>::remove(const K&) [with K = Tester; V = int]’:
+89-tester.cpp:197:1:   required from here
+bstmap.h:82:23: error: statement has no effect [-Werror=unused-value]
+           ptr1->right == NULL;
+                       ^
+bstmap.h: In member function ‘const V& BstMap<K, V>::lookup(const K&) const [with K = Tester; V = int]’:
+bstmap.h:45:3: error: control reaches end of non-void function [-Werror=return-type]
+   }
+   ^
+cc1plus: all warnings being treated as errors
+The code did not compile.  This test failed.
+-----------------------------------------------
+testcase 8 : Testing with BstMap<(a custom class we wrote),std::string>
+...compiling...
+In file included from 89-tester.cpp:1:0:
+bstmap.h: In instantiation of ‘void BstMap<K, V>::add(const K&, const V&) [with K = Tester; V = std::__cxx11::basic_string<char>]’:
+89-tester.cpp:197:1:   required from here
+bstmap.h:31:11: error: no matching function for call to ‘BstMap<Tester, std::__cxx11::basic_string<char> >::Node::Node(const Tester&, const std::__cxx11::basic_string<char>&, NULL, NULL)’
+     ptr = new Node(key,value,NULL,NULL);
+           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+bstmap.h:16:5: note: candidate: BstMap<K, V>::Node::Node(K, V) [with K = Tester; V = std::__cxx11::basic_string<char>]
+     Node(K k, V v) : key(k), value(v), left(NULL), right(NULL) {}
+     ^~~~
+bstmap.h:16:5: note:   candidate expects 2 arguments, 4 provided
+bstmap.h:15:5: note: candidate: BstMap<K, V>::Node::Node() [with K = Tester; V = std::__cxx11::basic_string<char>]
+     Node() : key(0), value(0), left(NULL), right(NULL) {}
+     ^~~~
+bstmap.h:15:5: note:   candidate expects 0 arguments, 4 provided
+bstmap.h:9:9: note: candidate: BstMap<Tester, std::__cxx11::basic_string<char> >::Node::Node(const BstMap<Tester, std::__cxx11::basic_string<char> >::Node&)
+   class Node {
+         ^~~~
+bstmap.h:9:9: note:   candidate expects 1 argument, 4 provided
+bstmap.h: In instantiation of ‘void BstMap<K, V>::remove(const K&) [with K = Tester; V = std::__cxx11::basic_string<char>]’:
+89-tester.cpp:197:1:   required from here
+bstmap.h:82:23: error: statement has no effect [-Werror=unused-value]
+           ptr1->right == NULL;
+                       ^
+bstmap.h: In member function ‘const V& BstMap<K, V>::lookup(const K&) const [with K = Tester; V = std::__cxx11::basic_string<char>]’:
+bstmap.h:45:3: error: control reaches end of non-void function [-Werror=return-type]
+   }
+   ^
+cc1plus: all warnings being treated as errors
+The code did not compile.  This test failed.
+-----------------------------------------------
+testcase 9 : Testing with BstMap<(a custom class we wrote),(a custom class we wrote)>
+...compiling...
+In file included from 89-tester.cpp:1:0:
+bstmap.h: In instantiation of ‘void BstMap<K, V>::add(const K&, const V&) [with K = Tester; V = Tester]’:
+89-tester.cpp:197:1:   required from here
+bstmap.h:31:11: error: no matching function for call to ‘BstMap<Tester, Tester>::Node::Node(const Tester&, const Tester&, NULL, NULL)’
+     ptr = new Node(key,value,NULL,NULL);
+           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+bstmap.h:16:5: note: candidate: BstMap<K, V>::Node::Node(K, V) [with K = Tester; V = Tester]
+     Node(K k, V v) : key(k), value(v), left(NULL), right(NULL) {}
+     ^~~~
+bstmap.h:16:5: note:   candidate expects 2 arguments, 4 provided
+bstmap.h:15:5: note: candidate: BstMap<K, V>::Node::Node() [with K = Tester; V = Tester]
+     Node() : key(0), value(0), left(NULL), right(NULL) {}
+     ^~~~
+bstmap.h:15:5: note:   candidate expects 0 arguments, 4 provided
+bstmap.h:9:9: note: candidate: BstMap<Tester, Tester>::Node::Node(const BstMap<Tester, Tester>::Node&)
+   class Node {
+         ^~~~
+bstmap.h:9:9: note:   candidate expects 1 argument, 4 provided
+bstmap.h: In instantiation of ‘void BstMap<K, V>::remove(const K&) [with K = Tester; V = Tester]’:
+89-tester.cpp:197:1:   required from here
+bstmap.h:82:23: error: statement has no effect [-Werror=unused-value]
+           ptr1->right == NULL;
+                       ^
+bstmap.h: In member function ‘const V& BstMap<K, V>::lookup(const K&) const [with K = Tester; V = Tester]’:
+bstmap.h:45:3: error: control reaches end of non-void function [-Werror=return-type]
+   }
+   ^
+cc1plus: all warnings being treated as errors
+The code did not compile.  This test failed.
+
+Overall Grade: F
