@@ -27,8 +27,8 @@ int main() {
   std::cout << "v1 = " << v1 << "\n";
   std::cout << "v2 = " << v2 << "\n";
   bstmap.remove(19);
-  //bstmap.printBstmap();
+  bstmap.printBstmap();
   bstmap.remove(11);
-  //bstmap.printBstmap();
+  bstmap.printBstmap();
   return EXIT_SUCCESS;
 }

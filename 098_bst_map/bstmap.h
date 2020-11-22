@@ -47,55 +47,41 @@ class BstMap : public Map<K, V> {
        throw std::invalid_argument("The key is not found!\n");
   
   }
- virtual void remove(const K& key) {
-     Node ** ptr = &root;
-    while((*ptr)!=NULL){
-      if((*ptr)->key>key){
-        ptr = &(*ptr)->left;
-      }else if((*ptr)->key<key){
-        ptr = &(*ptr)->right;
-      } else{
-      break;
+ virtual void remove(const K & key) {
+    Node ** curr = &root;
+    while (key != (*curr)->key) {
+      if (*curr == NULL) {
+        return;
       }
+      if (key < (*curr)->key) {
+        curr = &(*curr)->left;
       }
-      if((*ptr)!=NULL){
-        if((*ptr)->left == NULL && (*ptr)->right == NULL){
-          delete *ptr;
-          //ptr = NULL;
-          return ;
-        } else if((*ptr)->left == NULL && (*ptr)->right != NULL){
-          //(*ptr)->key = (*ptr)->right->key;
-          //(*ptr)>value = (*ptr)->right->value;
-          //delete ptr->right;
-          //ptr->right = NULL;
-          Node * curr = *ptr;
-          *ptr = (*ptr)->right;
-          delete curr;
-          return;
-        }else if((*ptr)->left != NULL && (*ptr)->right == NULL){
-          //ptr->key = ptr->left->key;
-          //ptr->value = ptr->left->value;
-          //delete ptr->left;
-          //ptr->left = NULL;
-          Node * curr = *ptr;
-          *ptr = (*ptr)->left;
-          delete curr;
-          return;
-        } else {
-          Node * ptr1 = (*ptr)->left;
-          while(ptr1->right !=NULL){
-            ptr1=ptr1->right;
-          }
-          //ptr->key = ptr1->key;
-          //ptr->value = ptr1->value;
-          Node * curr = *ptr;
-          ptr1->right = (*ptr)->right;
-          *ptr = ptr1;
-          delete curr;
-         // ptr1->right == NULL;
-          return;
-        }
+      else {
+        curr = &(*curr)->right;
       }
+    }
+    Node * temp;
+    if ((*curr)->left == NULL) {
+      temp = (*curr)->right;
+      delete *curr;
+      *curr = temp;
+    }
+    else if ((*curr)->right == NULL) {
+      temp = (*curr)->left;
+      delete *curr;
+      *curr = temp;
+    }
+    else {
+      Node ** temp2 = &(*curr)->left;
+      while ((*temp2)->right != NULL) {
+        temp2 = &(*temp2)->right;
+      }
+      (*curr)->key = (*temp2)->key;
+      (*curr)->value = (*temp2)->value;
+      temp = (*temp2)->left;
+      delete *temp2;
+      *temp2 = temp;
+    }
   }
   virtual ~BstMap<K, V>() { destroy(root); }
 
@@ -105,6 +91,18 @@ class BstMap : public Map<K, V> {
       destroy(current->right);
       delete current;
     }
+  }
+  void printPreorder(Node * curr) {
+    if (curr != NULL) {
+      std::cout << curr->key << " ";
+      printPreorder(curr->left);
+      printPreorder(curr->right);
+    }
+  }
+
+  void printBstmap() {
+    printPreorder(root);
+    std::cout << "\n";
   }
 
 
