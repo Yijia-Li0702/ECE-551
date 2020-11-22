@@ -1,2 +1,2 @@
-test: test.cpp
-	g++ -o test -pedantic -std=gnu++98 -Wall -Werror test.cpp
+test:test.cpp bstmap.h
+	g++ -o test -ggdb3 -Wall -Werror -pedantic -std=gnu++98 bstmap.h test.cpp

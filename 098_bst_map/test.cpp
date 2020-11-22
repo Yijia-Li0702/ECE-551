@@ -22,7 +22,6 @@ int main() {
   bstmap.add(35, 10);
   bstmap.add(70, 11);
   bstmap.add(86, 12);
-  bstmap.printBstmap();
   int v1 = bstmap.lookup(60);
   int v2 = bstmap.lookup(11);
   std::cout << "v1 = " << v1 << "\n";

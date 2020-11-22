@@ -20,15 +20,18 @@ class BstMap : public Map<K, V> {
  public:
   BstMap() : root(NULL) {}
    virtual void add(const K & key, const V & value) {
-    Node * ptr = root;
-    while(ptr!=NULL){
-      if(ptr->key>=key){
-        ptr = ptr->left;
-      }else {
-        ptr = ptr->right;
+    Node ** ptr = &root;
+    while((*ptr)!=NULL){
+       if((*ptr)->key>key){
+        ptr = &(*ptr)->left;
+      }else if((*ptr)->key<key){
+        ptr = &(*ptr)->right;
+      }else if((*ptr)->key == key){
+        (*ptr)->value = value;
+        return;
       }
     }
-    ptr = new Node(key,value,NULL,NULL);
+    *ptr = new Node(key,value);
   }
   virtual const V & lookup(const K& key) const throw (std::invalid_argument) {
      Node * ptr = root;
@@ -40,51 +43,61 @@ class BstMap : public Map<K, V> {
       } else{
         return ptr->value;
       }
+      }
        throw std::invalid_argument("The key is not found!\n");
-  }
+  
   }
  virtual void remove(const K& key) {
-     Node * ptr = root;
-    while(ptr!=NULL){
-      if(ptr->key>key){
-        ptr = ptr->left;
-      }else if(ptr->key<key){
-        ptr = ptr->right;
+     Node ** ptr = &root;
+    while((*ptr)!=NULL){
+      if((*ptr)->key>key){
+        ptr = &(*ptr)->left;
+      }else if((*ptr)->key<key){
+        ptr = &(*ptr)->right;
       } else{
       break;
       }
       }
-      if(ptr!=NULL){
-        if(ptr->left == NULL && ptr->right == NULL){
-          delete ptr;
-          ptr = NULL;
+      if((*ptr)!=NULL){
+        if((*ptr)->left == NULL && (*ptr)->right == NULL){
+          delete *ptr;
+          //ptr = NULL;
           return ;
-        } else if(ptr->left == NULL && ptr->right != NULL){
-          ptr->key = ptr->right->key;
-          ptr->value = ptr->right->value;
-          delete ptr->right;
-          ptr->right = NULL;
+        } else if((*ptr)->left == NULL && (*ptr)->right != NULL){
+          //(*ptr)->key = (*ptr)->right->key;
+          //(*ptr)>value = (*ptr)->right->value;
+          //delete ptr->right;
+          //ptr->right = NULL;
+          Node * curr = *ptr;
+          *ptr = (*ptr)->right;
+          delete curr;
           return;
-        }else if(ptr->left != NULL && ptr->right == NULL){
-          ptr->key = ptr->left->key;
-          ptr->value = ptr->left->value;
-          delete ptr->left;
-          ptr->left = NULL;
+        }else if((*ptr)->left != NULL && (*ptr)->right == NULL){
+          //ptr->key = ptr->left->key;
+          //ptr->value = ptr->left->value;
+          //delete ptr->left;
+          //ptr->left = NULL;
+          Node * curr = *ptr;
+          *ptr = (*ptr)->left;
+          delete curr;
           return;
         } else {
-          Node * ptr1 = ptr->left;
+          Node * ptr1 = (*ptr)->left;
           while(ptr1->right !=NULL){
             ptr1=ptr1->right;
           }
-          ptr->key = ptr1->key;
-          ptr->value = ptr1->value;
-          delete ptr1->right;
-          ptr1->right == NULL;
+          //ptr->key = ptr1->key;
+          //ptr->value = ptr1->value;
+          Node * curr = *ptr;
+          ptr1->right = (*ptr)->right;
+          *ptr = ptr1;
+          delete curr;
+         // ptr1->right == NULL;
           return;
         }
       }
   }
-    virtual ~BstMap<K, V>() { destroy(root); }
+  virtual ~BstMap<K, V>() { destroy(root); }
 
   void destroy(Node * current) {
     if (current != NULL) {
