@@ -1,23 +1,26 @@
-Grading at 11/23/2020:09:18:39.375305
-For commit ID 9d60e5ea6dc9e72de8ab4d0953cdad0e2960c22e
-Grading at Mon Nov 23 17:18:36 CST 2020
+Grading at 11/23/2020:09:20:32.341166
+For commit ID 00f75979084973d3573d0a80d26cba774202cee3
+Grading at Mon Nov 23 17:20:29 CST 2020
 -----------------------------------------------
 testcase 1 : Testing with BstSet<int>
 ...compiling...
 The code compiled.
-  - Valgrind reported errors
-Valgrind reported errors (test failed).
+  - Valgrind was clean (no errors, no memory leaks)
+Your file matched the expected output
+Testcase passed 
 -----------------------------------------------
 testcase 2 : Testing with BstSet<std::string>
 ...compiling...
 The code compiled.
-  - Valgrind reported errors
-Valgrind reported errors (test failed).
+  - Valgrind was clean (no errors, no memory leaks)
+Your file matched the expected output
+Testcase passed 
 -----------------------------------------------
 testcase 3 : Testing with BstSet<(a custom class we wrote)>
 ...compiling...
 The code compiled.
-  - Valgrind reported errors
-Valgrind reported errors (test failed).
+  - Valgrind was clean (no errors, no memory leaks)
+Your file matched the expected output
+Testcase passed 
 
-Overall Grade: F
+Overall Grade: A
