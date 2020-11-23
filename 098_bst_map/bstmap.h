@@ -6,6 +6,7 @@
 
 template<typename K, typename V>
 class BstMap : public Map<K, V> {
+ private:
   class Node {
    public:
     K key;
@@ -19,6 +20,26 @@ class BstMap : public Map<K, V> {
 
  public:
   BstMap() : root(NULL) {}
+  BstMap(const BstMap & rhs){
+   root = copy(rhs->root); 
+  }
+  BstMap & operator=(const BstMap & rhs){
+    if(this != &rhs){
+    destroy(root);
+    root = copy(rhs->root);  
+    }
+    return *this;
+  }
+  Node * copy(Node * rhs){
+    if(rhs == NULL){
+      return rhs;
+    }
+    Node * curr = new Node(rhs->key,rhs->value);
+    curr->left = copy(rhs->left);
+    curr->right = copy(rhs->right);
+    return curr;
+  }  
+  
    virtual void add(const K & key, const V & value) {
     Node ** curr = &root;
     while (*curr != NULL) {
@@ -106,6 +127,4 @@ class BstMap : public Map<K, V> {
     printPreorder(root);
     std::cout << "\n";
   }
-
-
 };
