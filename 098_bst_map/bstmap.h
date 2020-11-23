@@ -21,12 +21,12 @@ class BstMap : public Map<K, V> {
  public:
   BstMap() : root(NULL) {}
   BstMap(const BstMap & rhs){
-   root = copy(rhs->root); 
+   root = copy(rhs.root); 
   }
   BstMap & operator=(const BstMap & rhs){
     if(this != &rhs){
     destroy(root);
-    root = copy(rhs->root);  
+    root = copy(rhs.root);  
     }
     return *this;
   }
