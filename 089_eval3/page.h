@@ -16,10 +16,12 @@ private:
   //nextPage
   std::map<std::string,unsigned> numoption;
 public:
-  Page():text(NULL),option(NULL),endPage(false),worl(false){}
-  void Page::setendwin(std::ifstream & infile);
-  void Page::readPage(std::ifstream & infile);
-  void Page::printPage();
+  //Page():text(NULL),option(NULL),endPage(false),ifwin(false){}
+  Page():text(),option(),endPage(false),ifwin(false){}
+  void setendwin(const char * filename);
+  void readPage(const char * filename);
+  void printPage();
+  void openPage(char * filename);
   
   
 };
