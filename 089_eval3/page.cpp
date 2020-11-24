@@ -10,9 +10,12 @@
 #include "page.h"
 
 void Page::setendwin(const char * filename){
+ // void Page::setendwin(std::ifstream ifs){
     std::ifstream ifs;
     ifs.open(filename,std::ifstream::in);
-    //ifs.fail
+    if(ifs.fail()){
+     std::cerr<<"can't open the file";
+    }
     std::string str;
     if(!ifs.eof()){
       //get the first line of infile
@@ -33,8 +36,12 @@ void Page::setendwin(const char * filename){
   }
   
   void Page::readPage(const char * filename){
+ //void Page::readPage(std::ifstream ifs){
     std::ifstream ifs;
     ifs.open(filename,std::ifstream::in);
+    if(ifs.fail()){
+     std::cerr<<"can't open the file";
+    }
     //justify if it's option
     bool ifoption = true;
     std::string str;
@@ -94,16 +101,18 @@ void Page::setendwin(const char * filename){
       std::cout<<pagename<<std::endl;
       const char * n = pagename.c_str(); 
       i++;
-      //std::ifstream ifs;
-      //ifs.open(n,std::ifstream::in);
-      //if(ifs.fail()){
-        //break;
-      //}
+      std::ifstream ifs;
+      ifs.open(n,std::ifstream::in);
+      if(ifs.fail()){
+        break;
+      }
       Page p;
       p.setendwin(n);
       p.readPage(n);
+       //p.setendwin(ifs);
+      //p.readPage(ifs);
       p.printPage();
-      //ifs.close();
+      ifs.close();
     }
  
 }

@@ -13,10 +13,18 @@ int main(int argc, char ** argv){
     fprintf(stderr, "not enough input error\n");
     return EXIT_FAILURE;
   }
+   //std::ifstream ifs;
+   //ifs.open(argv[1],std::ifstream::in);
+   //if(ifs.fail()){
+     //std::cerr<<"can't open the file";
+    //}
   Page p;
   p.setendwin(argv[1]);
   p.readPage(argv[1]);
+  //p.setendwin(ifs);
+  //p.readPage(ifs);
   p.printPage();
+  //ifs.close();
   
 
 }
