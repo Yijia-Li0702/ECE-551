@@ -76,9 +76,7 @@ For the first part of this assignment, you should make the following:
     described below. If any errors are found, your program should print an
     error message and exit failure. 
 
-    Note that for this step, you are only reading one page in isolation, so
-    you cannot check if the page numbers in the choices are actually valid
-    for the story (beyond checking that they are positive numbers).
+    Note that for this step, you are only reading one page in isolation, so you cannot check if the page numbers in the choices are actually valid for the story (beyond checking that they are positive numbers).
      
 Output format:
 
@@ -137,8 +135,7 @@ Sorry, you have lost. Better luck next time!
     and working correclty (i.e., we will explicitly test this program).
 
 Hint: You should write cyoa-step1.cpp with *as little* code in it as
-possible. It should mostly make use of classes and functions that you have
-written in other files, so you can reuse them for later steps.
+possible. It should mostly make use of classes and functions that you have written in other files, so you can reuse them for later steps.
 
 Be sure your code compiles, test it well, and submit it before proceeding
 to the next step. 
