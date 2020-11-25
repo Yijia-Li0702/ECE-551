@@ -155,8 +155,9 @@ For this step, you are going to make cyoa-step2, which should let a person
  3. Your program should continue reading pages until a particular page does
     not exist. Note that it is NOT an error for some pageN.txt (N > 1) to
     not exist. It simply indicates that you have read all the pages in the
-    story. It is, however, an error if one of the pages that you read has
-    an invalid format.
+    story.
+    //*******It is, however, an error if one of the pages that you read has
+    an invalid format.******//
     
  4. After reading all pages, your program should verify the following
     conditions are met for the story as a whole:

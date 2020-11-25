@@ -1,9 +1,16 @@
-CCFLAGS=--std=gnu++11 -pedantic -Wall -Werror -ggdb3
-cyoa-step1: page.o cyoa-step1.o
-	g++ -o cyoa-step1 $(CCFLAGS) page.o cyoa-step1.o
+CFLAGS=-std=gnu++11 -pedantic -Wall -Werror -ggdb3
+PROGS=cyoa-step1 cyoa-step2 cyoa-step3 cyoa-step4
+OBJS=$(patsubst %,%.o,$(PROGS)) page.o story.o
+all: $(PROGS)
+cyoa-step%: cyoa-step%.o page.o story.o
+	g++ -o $@ $^
+%.o: %.cpp
+	g++ $(CFLAGS) -c $<
 
-%.o: %.cpp page.h
-	g++ -c $(CCFLAGS) $<
-
+.PHONY: clean
 clean:
-	rm -f *.o  *~ cyoa-step1
+	rm -f *~ $(PROGS) $(OBJS)
+
+page.o: page.h
+story.o:story.h
+
