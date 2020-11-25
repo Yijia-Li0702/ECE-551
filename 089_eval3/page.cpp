@@ -77,6 +77,24 @@ void Page::setendwin(const char * filename){
     ifs.close(); 
   }
   
+  bool Page::getifwin(){
+    return ifwin;
+  }
+  
+  bool Page::getendPage(){
+    return endPage;
+  }
+  
+  std::map<std::string,unsigned> Page::getnumoption(){
+    return numoption;
+  }
+  std::vector<std::string> Page::getoption(){
+    return option;
+  }
+  
+  std::string gettext(){
+    return text;
+  }
   void Page::printPage(){
     //print the text of the page
     std::cout << text ;
@@ -94,25 +112,4 @@ void Page::setendwin(const char * filename){
     }
   }
   
-  void Page::openPage(char * filename){
-    unsigned i = 1;
-    while(true){
-      std::string pagename = std::string(filename) + "//page"+std::to_string(i)+".txt";
-      std::cout<<pagename<<std::endl;
-      const char * n = pagename.c_str(); 
-      i++;
-      std::ifstream ifs;
-      ifs.open(n,std::ifstream::in);
-      if(ifs.fail()){
-        break;
-      }
-      Page p;
-      p.setendwin(n);
-      p.readPage(n);
-       //p.setendwin(ifs);
-      //p.readPage(ifs);
-      p.printPage();
-      ifs.close();
-    }
- 
-}
+  

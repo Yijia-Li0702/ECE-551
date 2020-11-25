@@ -22,8 +22,13 @@ public:
   //void setendwin(std::ifstream ifs);
   void setendwin(const char * filename);
   void readPage(const char * filename);
+  bool getifwin();
+  bool getendPage();
+  std::map<std::string,unsigned> getnumoption();
+  std::vector<std::string> getoption();
+  std::string gettext();
   void printPage();
-  void openPage(char * filename);
-  
+  bool openPage(char * filename);
+  void openStory(char * filename);
   
 };
