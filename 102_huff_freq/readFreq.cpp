@@ -34,12 +34,26 @@ uint64_t * readFrequencies(const char * fname) {
     exit(EXIT_FAILURE);
   }
   uint64_t * arr = new uint64_t[257]{0};
-   char c;
-  while(ifs.get(c)){
+   int c;
+  while((c = ifs.get())!=EOF){
    
-    arr[(int)c]++;
+    arr[c]++;
   }
   arr[256] = 1;
   ifs.close();
   return arr;
 }
+
+//uint64_t * readFrequencies(const char * fname) {
+//  uint64_t * ans = new uint64_t[257]();
+//  std::ifstream file;
+//  file.open(fname);
+//  int ind;
+//  while ((ind = file.get()) != EOF) {
+//    ans[ind]++;
+//  }
+//  ans[256] = 1;
+//  file.close();
+//  return ans;
+//}
+
