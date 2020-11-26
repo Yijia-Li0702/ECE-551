@@ -1,5 +1,11 @@
 #include <stdio.h>
 #include <cstdlib>
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <cstdio>
+#include <algorithm>
 #include "readFreq.h"
 
 void printSym(std::ostream & s, unsigned sym) {
@@ -21,4 +27,19 @@ void printSym(std::ostream & s, unsigned sym) {
 }
 uint64_t * readFrequencies(const char * fname) {
   //WRITE ME!
+  std::ifstream ifs;
+  ifs.open(fname, std::ifstream::in);
+  if(ifs.fail()){
+    std::cerr<<"can't open the file";
+    exit(EXIT_FAILURE);
+  }
+  uint64_t * arr = new uint64_t[257];
+   char c;
+  while(ifs.get(c)){
+   
+    arr[(int)c]++;
+  }
+  arr[256] = 1;
+  ifs.close();
+  return arr;
 }
