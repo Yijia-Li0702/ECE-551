@@ -47,10 +47,8 @@ void writeCompressedOutput(const char* inFile,
   //and write the proper bit string with the BitFileWriter
 
   //dont forget to lookup 256 for the EOF marker, and write it out.
-    //std::map<unsigned,BitString>::iterator it = theMap.find(c);
-   // if(it!=theMap.end()){
+
       bfw.writeBitString(theMap.find(256)->second);
-    //}
     
     ifs.close();
   //BitFileWriter will close the output file in its destructor
@@ -68,11 +66,12 @@ int main(int argc, char ** argv) {
   //hint 2: you can look at the main from the previous tester for 90% of this
   uint64_t * freq = readFrequencies(argv[1]);
   Node * root= buildTree(freq);
+   delete[] freq;
   BitString b;
   std::map<unsigned,BitString> theMap;
   root->buildMap(b,theMap);
   writeCompressedOutput(argv[1], argv[2], theMap);
-  delete[] freq;
+ 
   delete root;
   return EXIT_SUCCESS;
 
