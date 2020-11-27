@@ -14,8 +14,9 @@ private:
   //std::set<std::pair<bool, Page>> reachPage;
   //std::set<Page> reachPage;
   std::set<unsigned> reachPage;
+  std::set<std::pair<unsigned,unsigned>> sucPath;
 public:
-  Story():pages(),reachPage(){}
+  Story():pages(),reachPage(),sucPath(){}
   bool openPage(char * filename, int i);
   void openStory(char * filename);
   bool checkValid_4();

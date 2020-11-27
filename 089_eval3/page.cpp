@@ -124,3 +124,27 @@ void Page::setendwin(const char * filename){
   }
   
   
+  //get类
+   bool Page::getifwin(){
+    return ifwin;
+  }
+  
+  bool Page::getendPage(){
+    return endPage;
+  }
+  
+  std::map<std::string,unsigned> Page::getnumoption(){
+    return numoption;
+  }
+  std::vector<std::string> Page::getoption(){
+    return option;
+  }
+  std::vector<unsigned> Page::getnumofop(){
+    return numofop;
+  }
+  
+  std::string Page::gettext(){
+    return text;
+  }
+  
+  
