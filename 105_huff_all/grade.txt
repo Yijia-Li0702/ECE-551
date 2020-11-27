@@ -1,95 +1,26 @@
-Grading at 11/27/2020:06:13:28.680677
-For commit ID 772737fe3896da23908969207a87e99ae8fc2fd9
-Grading at Fri Nov 27 14:13:01 CST 2020
+Grading at 11/27/2020:06:20:09.540514
+For commit ID 1154379e700615adadce988fa9f5046d13f19319
+Grading at Fri Nov 27 14:19:42 CST 2020
 compiling
 g++ -ggdb3 -Wall -Werror -pedantic -std=gnu++98 -o compress  bitstring.o  buildTree.o  compress.o  node.o  readFreq.o
 Make succeed, compress created
 Testcase 1
 -----------------------
-  - Valgrind reported errors
-Valgrind reported errors (test failed).
-==17398== Memcheck, a memory error detector
-==17398== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==17398== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
-==17398== Command: ./compress /etc/issue theirs.1.compressed
-==17398== Parent PID: 17397
-==17398== 
-==17398== 
-==17398== HEAP SUMMARY:
-==17398==     in use at exit: 2,056 bytes in 1 blocks
-==17398==   total heap usage: 440 allocs, 439 frees, 208,320 bytes allocated
-==17398== 
-==17398== 2,056 bytes in 1 blocks are definitely lost in loss record 1 of 1
-==17398==    at 0x4C3289F: operator new[](unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==17398==    by 0x111DA8: readFrequencies(char const*) (readFreq.cpp:36)
-==17398==    by 0x1105D5: main (compress.cpp:69)
-==17398== 
-==17398== LEAK SUMMARY:
-==17398==    definitely lost: 2,056 bytes in 1 blocks
-==17398==    indirectly lost: 0 bytes in 0 blocks
-==17398==      possibly lost: 0 bytes in 0 blocks
-==17398==    still reachable: 0 bytes in 0 blocks
-==17398==         suppressed: 0 bytes in 0 blocks
-==17398== 
-==17398== For counts of detected and suppressed errors, rerun with: -v
-==17398== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+  - Valgrind was clean (no errors, no memory leaks)
+Decompressing, and comparing to original...:
+Your file matched the expected output
+Testcase passed 
 Testcase 2
 -----------------------
-  - Valgrind reported errors
-Valgrind reported errors (test failed).
-==17404== Memcheck, a memory error detector
-==17404== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==17404== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
-==17404== Command: ./compress /etc/services theirs.2.compressed
-==17404== Parent PID: 17402
-==17404== 
-==17404== 
-==17404== HEAP SUMMARY:
-==17404==     in use at exit: 2,056 bytes in 1 blocks
-==17404==   total heap usage: 2,001 allocs, 2,000 frees, 658,096 bytes allocated
-==17404== 
-==17404== 2,056 bytes in 1 blocks are definitely lost in loss record 1 of 1
-==17404==    at 0x4C3289F: operator new[](unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==17404==    by 0x111DA8: readFrequencies(char const*) (readFreq.cpp:36)
-==17404==    by 0x1105D5: main (compress.cpp:69)
-==17404== 
-==17404== LEAK SUMMARY:
-==17404==    definitely lost: 2,056 bytes in 1 blocks
-==17404==    indirectly lost: 0 bytes in 0 blocks
-==17404==      possibly lost: 0 bytes in 0 blocks
-==17404==    still reachable: 0 bytes in 0 blocks
-==17404==         suppressed: 0 bytes in 0 blocks
-==17404== 
-==17404== For counts of detected and suppressed errors, rerun with: -v
-==17404== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+  - Valgrind was clean (no errors, no memory leaks)
+Decompressing, and comparing to original...:
+Your file matched the expected output
+Testcase passed 
 Testcase 3
 -----------------------
-  - Valgrind reported errors
-Valgrind reported errors (test failed).
-==17422== Memcheck, a memory error detector
-==17422== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==17422== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
-==17422== Command: ./compress /usr/share/dict/words theirs.3.compressed
-==17422== Parent PID: 17421
-==17422== 
-==17422== 
-==17422== HEAP SUMMARY:
-==17422==     in use at exit: 2,056 bytes in 1 blocks
-==17422==   total heap usage: 9,998 allocs, 9,997 frees, 4,822,552 bytes allocated
-==17422== 
-==17422== 2,056 bytes in 1 blocks are definitely lost in loss record 1 of 1
-==17422==    at 0x4C3289F: operator new[](unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==17422==    by 0x111DA8: readFrequencies(char const*) (readFreq.cpp:36)
-==17422==    by 0x1105D5: main (compress.cpp:69)
-==17422== 
-==17422== LEAK SUMMARY:
-==17422==    definitely lost: 2,056 bytes in 1 blocks
-==17422==    indirectly lost: 0 bytes in 0 blocks
-==17422==      possibly lost: 0 bytes in 0 blocks
-==17422==    still reachable: 0 bytes in 0 blocks
-==17422==         suppressed: 0 bytes in 0 blocks
-==17422== 
-==17422== For counts of detected and suppressed errors, rerun with: -v
-==17422== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+  - Valgrind was clean (no errors, no memory leaks)
+Decompressing, and comparing to original...:
+Your file matched the expected output
+Testcase passed 
 
-Overall Grade: F
+Overall Grade: A
