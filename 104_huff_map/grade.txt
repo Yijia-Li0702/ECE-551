@@ -1,228 +1,32 @@
-Grading at 11/27/2020:04:23:21.696780
-For commit ID f7b89bb955352050fb11ca0238a992aed1382444
-Grading at Fri Nov 27 12:23:17 CST 2020
+Grading at 11/27/2020:04:33:00.688486
+For commit ID 1f76e061ea416697bf347efc2c2144dc22a6f435
+Grading at Fri Nov 27 12:32:56 CST 2020
 compiling
 g++ -ggdb3 -Wall -Werror -pedantic -std=gnu++98 -o testMap  readFreq.o  node.o  bitstring.o  buildTree.o  testMap.o
 Make succeed, testMap created
 Testcase 1
 -----------------------
-  - Valgrind reported errors
-Valgrind reported errors (test failed).
-==85493== Memcheck, a memory error detector
-==85493== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==85493== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
-==85493== Command: ./testMap /etc/issue
-==85493== Parent PID: 85492
-==85493== 
-==85493== Conditional jump or move depends on uninitialised value(s)
-==85493==    at 0x10F8E9: buildTree(unsigned long*) (buildTree.cpp:13)
-==85493==    by 0x111748: main (testMap.cpp:22)
-==85493== 
-==85493== Conditional jump or move depends on uninitialised value(s)
-==85493==    at 0x11097C: void std::__push_heap<__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, long, Node*, __gnu_cxx::__ops::_Iter_comp_val<NodePtrCompare> >(__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, long, long, Node*, __gnu_cxx::__ops::_Iter_comp_val<NodePtrCompare>&) (stl_heap.h:133)
-==85493==    by 0x110126: void std::push_heap<__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, NodePtrCompare>(__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, NodePtrCompare) (stl_heap.h:207)
-==85493==    by 0x10FCEB: std::priority_queue<Node*, std::vector<Node*, std::allocator<Node*> >, NodePtrCompare>::push(Node* const&) (stl_queue.h:598)
-==85493==    by 0x10F93A: buildTree(unsigned long*) (buildTree.cpp:14)
-==85493==    by 0x111748: main (testMap.cpp:22)
-==85493== 
-==85493== Conditional jump or move depends on uninitialised value(s)
-==85493==    at 0x110D9C: void std::__adjust_heap<__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, long, Node*, __gnu_cxx::__ops::_Iter_comp_iter<NodePtrCompare> >(__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, long, long, Node*, __gnu_cxx::__ops::_Iter_comp_iter<NodePtrCompare>) (stl_heap.h:222)
-==85493==    by 0x110B0E: void std::__pop_heap<__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__ops::_Iter_comp_iter<NodePtrCompare> >(__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__ops::_Iter_comp_iter<NodePtrCompare>&) (stl_heap.h:253)
-==85493==    by 0x110227: void std::pop_heap<__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, NodePtrCompare>(__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, NodePtrCompare) (stl_heap.h:320)
-==85493==    by 0x10FD68: std::priority_queue<Node*, std::vector<Node*, std::allocator<Node*> >, NodePtrCompare>::pop() (stl_queue.h:633)
-==85493==    by 0x10F977: buildTree(unsigned long*) (buildTree.cpp:19)
-==85493==    by 0x111748: main (testMap.cpp:22)
-==85493== 
-==85493== Conditional jump or move depends on uninitialised value(s)
-==85493==    at 0x11097C: void std::__push_heap<__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, long, Node*, __gnu_cxx::__ops::_Iter_comp_val<NodePtrCompare> >(__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, long, long, Node*, __gnu_cxx::__ops::_Iter_comp_val<NodePtrCompare>&) (stl_heap.h:133)
-==85493==    by 0x110ECC: void std::__adjust_heap<__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, long, Node*, __gnu_cxx::__ops::_Iter_comp_iter<NodePtrCompare> >(__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, long, long, Node*, __gnu_cxx::__ops::_Iter_comp_iter<NodePtrCompare>) (stl_heap.h:237)
-==85493==    by 0x110B0E: void std::__pop_heap<__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__ops::_Iter_comp_iter<NodePtrCompare> >(__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__ops::_Iter_comp_iter<NodePtrCompare>&) (stl_heap.h:253)
-==85493==    by 0x110227: void std::pop_heap<__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, NodePtrCompare>(__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, NodePtrCompare) (stl_heap.h:320)
-==85493==    by 0x10FD68: std::priority_queue<Node*, std::vector<Node*, std::allocator<Node*> >, NodePtrCompare>::pop() (stl_queue.h:633)
-==85493==    by 0x10F977: buildTree(unsigned long*) (buildTree.cpp:19)
-==85493==    by 0x111748: main (testMap.cpp:22)
-==85493== 
-==85493== Conditional jump or move depends on uninitialised value(s)
-==85493==    at 0x11097C: void std::__push_heap<__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, long, Node*, __gnu_cxx::__ops::_Iter_comp_val<NodePtrCompare> >(__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, long, long, Node*, __gnu_cxx::__ops::_Iter_comp_val<NodePtrCompare>&) (stl_heap.h:133)
-==85493==    by 0x110126: void std::push_heap<__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, NodePtrCompare>(__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, NodePtrCompare) (stl_heap.h:207)
-==85493==    by 0x10FCEB: std::priority_queue<Node*, std::vector<Node*, std::allocator<Node*> >, NodePtrCompare>::push(Node* const&) (stl_queue.h:598)
-==85493==    by 0x10F9CD: buildTree(unsigned long*) (buildTree.cpp:29)
-==85493==    by 0x111748: main (testMap.cpp:22)
-==85493== 
-==85493== 
-==85493== HEAP SUMMARY:
-==85493==     in use at exit: 0 bytes in 0 blocks
-==85493==   total heap usage: 401 allocs, 401 frees, 187,760 bytes allocated
-==85493== 
-==85493== All heap blocks were freed -- no leaks are possible
-==85493== 
-==85493== For counts of detected and suppressed errors, rerun with: -v
-==85493== Use --track-origins=yes to see where uninitialised values come from
-==85493== ERROR SUMMARY: 398 errors from 5 contexts (suppressed: 0 from 0)
+  - Valgrind was clean (no errors, no memory leaks)
+Checking output:
+Your file matched the expected output
+Testcase passed 
 Testcase 2
 -----------------------
-  - Valgrind reported errors
-Valgrind reported errors (test failed).
-==85497== Memcheck, a memory error detector
-==85497== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==85497== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
-==85497== Command: ./testMap /etc/services
-==85497== Parent PID: 85496
-==85497== 
-==85497== Conditional jump or move depends on uninitialised value(s)
-==85497==    at 0x10F8E9: buildTree(unsigned long*) (buildTree.cpp:13)
-==85497==    by 0x111748: main (testMap.cpp:22)
-==85497== 
-==85497== Conditional jump or move depends on uninitialised value(s)
-==85497==    at 0x11097C: void std::__push_heap<__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, long, Node*, __gnu_cxx::__ops::_Iter_comp_val<NodePtrCompare> >(__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, long, long, Node*, __gnu_cxx::__ops::_Iter_comp_val<NodePtrCompare>&) (stl_heap.h:133)
-==85497==    by 0x110126: void std::push_heap<__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, NodePtrCompare>(__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, NodePtrCompare) (stl_heap.h:207)
-==85497==    by 0x10FCEB: std::priority_queue<Node*, std::vector<Node*, std::allocator<Node*> >, NodePtrCompare>::push(Node* const&) (stl_queue.h:598)
-==85497==    by 0x10F93A: buildTree(unsigned long*) (buildTree.cpp:14)
-==85497==    by 0x111748: main (testMap.cpp:22)
-==85497== 
-==85497== Conditional jump or move depends on uninitialised value(s)
-==85497==    at 0x110D9C: void std::__adjust_heap<__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, long, Node*, __gnu_cxx::__ops::_Iter_comp_iter<NodePtrCompare> >(__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, long, long, Node*, __gnu_cxx::__ops::_Iter_comp_iter<NodePtrCompare>) (stl_heap.h:222)
-==85497==    by 0x110B0E: void std::__pop_heap<__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__ops::_Iter_comp_iter<NodePtrCompare> >(__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__ops::_Iter_comp_iter<NodePtrCompare>&) (stl_heap.h:253)
-==85497==    by 0x110227: void std::pop_heap<__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, NodePtrCompare>(__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, NodePtrCompare) (stl_heap.h:320)
-==85497==    by 0x10FD68: std::priority_queue<Node*, std::vector<Node*, std::allocator<Node*> >, NodePtrCompare>::pop() (stl_queue.h:633)
-==85497==    by 0x10F977: buildTree(unsigned long*) (buildTree.cpp:19)
-==85497==    by 0x111748: main (testMap.cpp:22)
-==85497== 
-==85497== Conditional jump or move depends on uninitialised value(s)
-==85497==    at 0x11097C: void std::__push_heap<__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, long, Node*, __gnu_cxx::__ops::_Iter_comp_val<NodePtrCompare> >(__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, long, long, Node*, __gnu_cxx::__ops::_Iter_comp_val<NodePtrCompare>&) (stl_heap.h:133)
-==85497==    by 0x110ECC: void std::__adjust_heap<__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, long, Node*, __gnu_cxx::__ops::_Iter_comp_iter<NodePtrCompare> >(__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, long, long, Node*, __gnu_cxx::__ops::_Iter_comp_iter<NodePtrCompare>) (stl_heap.h:237)
-==85497==    by 0x110B0E: void std::__pop_heap<__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__ops::_Iter_comp_iter<NodePtrCompare> >(__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__ops::_Iter_comp_iter<NodePtrCompare>&) (stl_heap.h:253)
-==85497==    by 0x110227: void std::pop_heap<__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, NodePtrCompare>(__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, NodePtrCompare) (stl_heap.h:320)
-==85497==    by 0x10FD68: std::priority_queue<Node*, std::vector<Node*, std::allocator<Node*> >, NodePtrCompare>::pop() (stl_queue.h:633)
-==85497==    by 0x10F977: buildTree(unsigned long*) (buildTree.cpp:19)
-==85497==    by 0x111748: main (testMap.cpp:22)
-==85497== 
-==85497== Conditional jump or move depends on uninitialised value(s)
-==85497==    at 0x11097C: void std::__push_heap<__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, long, Node*, __gnu_cxx::__ops::_Iter_comp_val<NodePtrCompare> >(__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, long, long, Node*, __gnu_cxx::__ops::_Iter_comp_val<NodePtrCompare>&) (stl_heap.h:133)
-==85497==    by 0x110126: void std::push_heap<__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, NodePtrCompare>(__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, NodePtrCompare) (stl_heap.h:207)
-==85497==    by 0x10FCEB: std::priority_queue<Node*, std::vector<Node*, std::allocator<Node*> >, NodePtrCompare>::push(Node* const&) (stl_queue.h:598)
-==85497==    by 0x10F9CD: buildTree(unsigned long*) (buildTree.cpp:29)
-==85497==    by 0x111748: main (testMap.cpp:22)
-==85497== 
-==85497== 
-==85497== HEAP SUMMARY:
-==85497==     in use at exit: 0 bytes in 0 blocks
-==85497==   total heap usage: 1,789 allocs, 1,789 frees, 543,584 bytes allocated
-==85497== 
-==85497== All heap blocks were freed -- no leaks are possible
-==85497== 
-==85497== For counts of detected and suppressed errors, rerun with: -v
-==85497== Use --track-origins=yes to see where uninitialised values come from
-==85497== ERROR SUMMARY: 1430 errors from 5 contexts (suppressed: 0 from 0)
+  - Valgrind was clean (no errors, no memory leaks)
+Checking output:
+Your file matched the expected output
+Testcase passed 
 Testcase 3
 -----------------------
-  - Valgrind reported errors
-Valgrind reported errors (test failed).
-==85507== Memcheck, a memory error detector
-==85507== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==85507== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
-==85507== Command: ./testMap /usr/share/dict/words
-==85507== Parent PID: 85506
-==85507== 
-==85507== Conditional jump or move depends on uninitialised value(s)
-==85507==    at 0x10F8E9: buildTree(unsigned long*) (buildTree.cpp:13)
-==85507==    by 0x111748: main (testMap.cpp:22)
-==85507== 
-==85507== Conditional jump or move depends on uninitialised value(s)
-==85507==    at 0x11097C: void std::__push_heap<__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, long, Node*, __gnu_cxx::__ops::_Iter_comp_val<NodePtrCompare> >(__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, long, long, Node*, __gnu_cxx::__ops::_Iter_comp_val<NodePtrCompare>&) (stl_heap.h:133)
-==85507==    by 0x110126: void std::push_heap<__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, NodePtrCompare>(__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, NodePtrCompare) (stl_heap.h:207)
-==85507==    by 0x10FCEB: std::priority_queue<Node*, std::vector<Node*, std::allocator<Node*> >, NodePtrCompare>::push(Node* const&) (stl_queue.h:598)
-==85507==    by 0x10F93A: buildTree(unsigned long*) (buildTree.cpp:14)
-==85507==    by 0x111748: main (testMap.cpp:22)
-==85507== 
-==85507== Conditional jump or move depends on uninitialised value(s)
-==85507==    at 0x110D9C: void std::__adjust_heap<__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, long, Node*, __gnu_cxx::__ops::_Iter_comp_iter<NodePtrCompare> >(__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, long, long, Node*, __gnu_cxx::__ops::_Iter_comp_iter<NodePtrCompare>) (stl_heap.h:222)
-==85507==    by 0x110B0E: void std::__pop_heap<__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__ops::_Iter_comp_iter<NodePtrCompare> >(__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__ops::_Iter_comp_iter<NodePtrCompare>&) (stl_heap.h:253)
-==85507==    by 0x110227: void std::pop_heap<__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, NodePtrCompare>(__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, NodePtrCompare) (stl_heap.h:320)
-==85507==    by 0x10FD68: std::priority_queue<Node*, std::vector<Node*, std::allocator<Node*> >, NodePtrCompare>::pop() (stl_queue.h:633)
-==85507==    by 0x10F977: buildTree(unsigned long*) (buildTree.cpp:19)
-==85507==    by 0x111748: main (testMap.cpp:22)
-==85507== 
-==85507== Conditional jump or move depends on uninitialised value(s)
-==85507==    at 0x11097C: void std::__push_heap<__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, long, Node*, __gnu_cxx::__ops::_Iter_comp_val<NodePtrCompare> >(__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, long, long, Node*, __gnu_cxx::__ops::_Iter_comp_val<NodePtrCompare>&) (stl_heap.h:133)
-==85507==    by 0x110ECC: void std::__adjust_heap<__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, long, Node*, __gnu_cxx::__ops::_Iter_comp_iter<NodePtrCompare> >(__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, long, long, Node*, __gnu_cxx::__ops::_Iter_comp_iter<NodePtrCompare>) (stl_heap.h:237)
-==85507==    by 0x110B0E: void std::__pop_heap<__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__ops::_Iter_comp_iter<NodePtrCompare> >(__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__ops::_Iter_comp_iter<NodePtrCompare>&) (stl_heap.h:253)
-==85507==    by 0x110227: void std::pop_heap<__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, NodePtrCompare>(__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, NodePtrCompare) (stl_heap.h:320)
-==85507==    by 0x10FD68: std::priority_queue<Node*, std::vector<Node*, std::allocator<Node*> >, NodePtrCompare>::pop() (stl_queue.h:633)
-==85507==    by 0x10F977: buildTree(unsigned long*) (buildTree.cpp:19)
-==85507==    by 0x111748: main (testMap.cpp:22)
-==85507== 
-==85507== Conditional jump or move depends on uninitialised value(s)
-==85507==    at 0x11097C: void std::__push_heap<__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, long, Node*, __gnu_cxx::__ops::_Iter_comp_val<NodePtrCompare> >(__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, long, long, Node*, __gnu_cxx::__ops::_Iter_comp_val<NodePtrCompare>&) (stl_heap.h:133)
-==85507==    by 0x110126: void std::push_heap<__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, NodePtrCompare>(__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, NodePtrCompare) (stl_heap.h:207)
-==85507==    by 0x10FCEB: std::priority_queue<Node*, std::vector<Node*, std::allocator<Node*> >, NodePtrCompare>::push(Node* const&) (stl_queue.h:598)
-==85507==    by 0x10F9CD: buildTree(unsigned long*) (buildTree.cpp:29)
-==85507==    by 0x111748: main (testMap.cpp:22)
-==85507== 
-==85507== 
-==85507== HEAP SUMMARY:
-==85507==     in use at exit: 0 bytes in 0 blocks
-==85507==   total heap usage: 1,516 allocs, 1,516 frees, 473,800 bytes allocated
-==85507== 
-==85507== All heap blocks were freed -- no leaks are possible
-==85507== 
-==85507== For counts of detected and suppressed errors, rerun with: -v
-==85507== Use --track-origins=yes to see where uninitialised values come from
-==85507== ERROR SUMMARY: 1255 errors from 5 contexts (suppressed: 0 from 0)
+  - Valgrind was clean (no errors, no memory leaks)
+Checking output:
+Your file matched the expected output
+Testcase passed 
 Testcase 4
 -----------------------
-  - Valgrind reported errors
-Valgrind reported errors (test failed).
-==85525== Memcheck, a memory error detector
-==85525== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==85525== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
-==85525== Command: ./testMap /usr/share/dict/cracklib-small
-==85525== Parent PID: 85524
-==85525== 
-==85525== Conditional jump or move depends on uninitialised value(s)
-==85525==    at 0x10F8E9: buildTree(unsigned long*) (buildTree.cpp:13)
-==85525==    by 0x111748: main (testMap.cpp:22)
-==85525== 
-==85525== Conditional jump or move depends on uninitialised value(s)
-==85525==    at 0x11097C: void std::__push_heap<__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, long, Node*, __gnu_cxx::__ops::_Iter_comp_val<NodePtrCompare> >(__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, long, long, Node*, __gnu_cxx::__ops::_Iter_comp_val<NodePtrCompare>&) (stl_heap.h:133)
-==85525==    by 0x110126: void std::push_heap<__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, NodePtrCompare>(__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, NodePtrCompare) (stl_heap.h:207)
-==85525==    by 0x10FCEB: std::priority_queue<Node*, std::vector<Node*, std::allocator<Node*> >, NodePtrCompare>::push(Node* const&) (stl_queue.h:598)
-==85525==    by 0x10F93A: buildTree(unsigned long*) (buildTree.cpp:14)
-==85525==    by 0x111748: main (testMap.cpp:22)
-==85525== 
-==85525== Conditional jump or move depends on uninitialised value(s)
-==85525==    at 0x110D9C: void std::__adjust_heap<__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, long, Node*, __gnu_cxx::__ops::_Iter_comp_iter<NodePtrCompare> >(__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, long, long, Node*, __gnu_cxx::__ops::_Iter_comp_iter<NodePtrCompare>) (stl_heap.h:222)
-==85525==    by 0x110B0E: void std::__pop_heap<__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__ops::_Iter_comp_iter<NodePtrCompare> >(__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__ops::_Iter_comp_iter<NodePtrCompare>&) (stl_heap.h:253)
-==85525==    by 0x110227: void std::pop_heap<__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, NodePtrCompare>(__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, NodePtrCompare) (stl_heap.h:320)
-==85525==    by 0x10FD68: std::priority_queue<Node*, std::vector<Node*, std::allocator<Node*> >, NodePtrCompare>::pop() (stl_queue.h:633)
-==85525==    by 0x10F977: buildTree(unsigned long*) (buildTree.cpp:19)
-==85525==    by 0x111748: main (testMap.cpp:22)
-==85525== 
-==85525== Conditional jump or move depends on uninitialised value(s)
-==85525==    at 0x11097C: void std::__push_heap<__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, long, Node*, __gnu_cxx::__ops::_Iter_comp_val<NodePtrCompare> >(__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, long, long, Node*, __gnu_cxx::__ops::_Iter_comp_val<NodePtrCompare>&) (stl_heap.h:133)
-==85525==    by 0x110ECC: void std::__adjust_heap<__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, long, Node*, __gnu_cxx::__ops::_Iter_comp_iter<NodePtrCompare> >(__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, long, long, Node*, __gnu_cxx::__ops::_Iter_comp_iter<NodePtrCompare>) (stl_heap.h:237)
-==85525==    by 0x110B0E: void std::__pop_heap<__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__ops::_Iter_comp_iter<NodePtrCompare> >(__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__ops::_Iter_comp_iter<NodePtrCompare>&) (stl_heap.h:253)
-==85525==    by 0x110227: void std::pop_heap<__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, NodePtrCompare>(__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, NodePtrCompare) (stl_heap.h:320)
-==85525==    by 0x10FD68: std::priority_queue<Node*, std::vector<Node*, std::allocator<Node*> >, NodePtrCompare>::pop() (stl_queue.h:633)
-==85525==    by 0x10F977: buildTree(unsigned long*) (buildTree.cpp:19)
-==85525==    by 0x111748: main (testMap.cpp:22)
-==85525== 
-==85525== Conditional jump or move depends on uninitialised value(s)
-==85525==    at 0x11097C: void std::__push_heap<__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, long, Node*, __gnu_cxx::__ops::_Iter_comp_val<NodePtrCompare> >(__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, long, long, Node*, __gnu_cxx::__ops::_Iter_comp_val<NodePtrCompare>&) (stl_heap.h:133)
-==85525==    by 0x110126: void std::push_heap<__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, NodePtrCompare>(__gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >, NodePtrCompare) (stl_heap.h:207)
-==85525==    by 0x10FCEB: std::priority_queue<Node*, std::vector<Node*, std::allocator<Node*> >, NodePtrCompare>::push(Node* const&) (stl_queue.h:598)
-==85525==    by 0x10F9CD: buildTree(unsigned long*) (buildTree.cpp:29)
-==85525==    by 0x111748: main (testMap.cpp:22)
-==85525== 
-==85525== 
-==85525== HEAP SUMMARY:
-==85525==     in use at exit: 0 bytes in 0 blocks
-==85525==   total heap usage: 864 allocs, 864 frees, 306,368 bytes allocated
-==85525== 
-==85525== All heap blocks were freed -- no leaks are possible
-==85525== 
-==85525== For counts of detected and suppressed errors, rerun with: -v
-==85525== Use --track-origins=yes to see where uninitialised values come from
-==85525== ERROR SUMMARY: 727 errors from 5 contexts (suppressed: 0 from 0)
+  - Valgrind was clean (no errors, no memory leaks)
+Checking output:
+Your file matched the expected output
+Testcase passed 
 
-Overall Grade: F
+Overall Grade: A
