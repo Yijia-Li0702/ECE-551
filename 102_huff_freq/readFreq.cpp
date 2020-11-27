@@ -33,7 +33,7 @@ uint64_t * readFrequencies(const char * fname) {
     std::cerr<<"can't open the file";
     exit(EXIT_FAILURE);
   }
-  uint64_t * arr = new uint64_t[257]{0};
+  uint64_t * arr = new uint64_t[257];
    int c;
   while((c = ifs.get())!=EOF){
    

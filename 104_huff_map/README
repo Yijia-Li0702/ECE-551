@@ -1,4 +1,4 @@
-Huffman Compression: Building an encoding map
+erHuffman Compression: Building an encoding map
 =============================================
    After the tree is built (which you did in the last probem), 
 you need to use it to create a mapping which encodes characters 
