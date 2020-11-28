@@ -23,16 +23,17 @@ public:
   //void setendwin(std::ifstream ifs);
   void setendwin(const char * filename);
   void readPage(const char * filename);
+  void printPage();
+  //bool openPage(char * filename);
+  //void openStory(char * filename);
+  void inipage(const char * filename);
+  std::ifstream tryopen(const char * filename);
+  void ifnum(std::string pagenum);
   bool getifwin();
   bool getendPage();
   std::map<std::string,unsigned> getnumoption();
   std::vector<std::string> getoption();
+  std::vector<unsigned> getnumofop();
   std::string gettext();
-  void printPage();
-  bool openPage(char * filename);
-  void openStory(char * filename);
-  void inipage(const char * filename);
-  std::ifstream tryopen(const char * filename);
-  void ifnum(std::string pagenum);
   
 };

@@ -154,10 +154,10 @@
   
   }
   
-  void findSucPath(){
+  void Story::findSucPath(){
     std::set<unsigned>::iterator it=reachPage.begin();
     while(it!=reachPage.end()){
-      if(pages[*it-1].getifwin){
+      if(pages[*it-1].getifwin()){
         sucPath.insert(std::pair<unsigned,unsigned>(*it,0));
         traceBack(*it);
         return;
@@ -165,22 +165,38 @@
     }
   }
   
-  void traceBack(unsigned pagenum){
+  void Story::traceBack(unsigned pagenum){
     std::set<unsigned>::iterator it=reachPage.begin();
     while(it!=reachPage.end()){
-      std::vector<unsigned> numofop=pages[*it-1].getnumofop);
+      std::vector<unsigned> numofop=pages[*it-1].getnumofop();
      // std::set<unsigned>::iterator itofnum=numofop.find(pagenum);
      // if(itofnum!=numofop.end()){
      for(size_t i = 0;i<numofop.size();i++){
        if(numofop[i] == pagenum){
+       std::cout << "Page " << i+1 <<std::endl;
         sucPath.insert(std::pair<unsigned,unsigned>(*it,i+1));
         if(*it != 1){
           traceBack(*it);
         } else{
           return;
         }
+        break;
        }
       }
+    }
+    return;
+  }
+  
+  void Story::printSucPath(){
+    std::set<std::pair<unsigned,unsigned>>::iterator it = sucPath.end();
+    while(it != sucPath.begin()){
+      if(std::get<1>(*it) != 0){
+        std::cout<<"Page "<<std::get<0>(*it)<<" Choice "<<std::get<1>(*it)<<std::endl;
+      } else {
+        //std::cout<<"Page "<<*it.first()<<" WIN"<<std::endl;
+        std::cout<<"Page "<<std::get<0>(*it)<<" WIN"<<std::endl;
+      }
+      --it;
     }
   }
   

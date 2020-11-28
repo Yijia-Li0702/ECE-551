@@ -14,6 +14,7 @@ private:
   //std::set<std::pair<bool, Page>> reachPage;
   //std::set<Page> reachPage;
   std::set<unsigned> reachPage;
+  //the first is the page num the second is num of option
   std::set<std::pair<unsigned,unsigned>> sucPath;
 public:
   Story():pages(),reachPage(),sucPath(){}
@@ -24,6 +25,7 @@ public:
   void display_5();
   void setReachP();
   void printUnreach();
-  
-
+  void findSucPath();
+  void traceBack(unsigned pagenum);
+  void printSucPath();
 };
