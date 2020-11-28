@@ -6,9 +6,8 @@ A
 E
 B
 D
-B
 D
+E
 B
-A
 C
 D
