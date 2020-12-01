@@ -14,11 +14,12 @@ public:
   std::vector<unsigned> numofop;
   bool endPage;
   bool ifwin;
-  //nextPage
+  std::pair<unsigned,unsigned> prevPage;
+  bool visited;
   std::map<std::string,unsigned> numoption;
 public:
   //Page():text(NULL),option(NULL),endPage(false),ifwin(false){}
-  Page():text(),option(),numofop(),endPage(false),ifwin(false){}
+  Page():text(),option(),numofop(),endPage(false),ifwin(false),prevPage(),visited(false){}
   //void readPage(std::ifstream ifs);
   //void setendwin(std::ifstream ifs);
   void setendwin(const char * filename);
@@ -35,5 +36,6 @@ public:
   std::vector<std::string> getoption();
   std::vector<unsigned> getnumofop();
   std::string gettext();
+  ~Page(){}
   
 };

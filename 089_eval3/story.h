@@ -25,7 +25,9 @@ public:
   void display_5();
   void setReachP();
   void printUnreach();
+  bool ifSucPathExist();
   void findSucPath();
   void traceBack(unsigned pagenum);
   void printSucPath();
+  ~Story(){}
 };

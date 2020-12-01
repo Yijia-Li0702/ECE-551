@@ -21,6 +21,10 @@ int main(int argc, char ** argv){
       exit(EXIT_FAILURE);
     }
     s.setReachP();
+    if(!s.ifSucPathExist()){
+      std::cerr<<"There is no way to win"<<std::endl;
+      exit(EXIT_FAILURE);
+    }
     s.findSucPath();
     s.printSucPath();
   

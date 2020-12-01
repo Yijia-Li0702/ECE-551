@@ -6,6 +6,7 @@
 #include <set>
 #include <cstdlib>
 #include <algorithm>
+#include <stack>
 //#include "page.h"
 #include "story.h"
 
@@ -154,51 +155,124 @@
   
   }
   
-  void Story::findSucPath(){
+  bool Story::ifSucPathExist(){
+    //iterate through the story's reachablt set
     std::set<unsigned>::iterator it=reachPage.begin();
     while(it!=reachPage.end()){
+      //find the page that is win
       if(pages[*it-1].getifwin()){
-        sucPath.insert(std::pair<unsigned,unsigned>(*it,0));
-        traceBack(*it);
-        return;
+        //std::cout << "Page " << *it+1 <<std::endl;
+        //sucPath.insert(std::pair<unsigned,unsigned>(*it,0));
+        //traceBack(*it);
+        return true;
+      }
+      ++it;
+    }
+    return false;
+  }
+
+  void Story::findSucPath(){
+    std::stack<unsigned> tempS;
+    pages[0].visited = true;
+    tempS.push(1);
+    while(!tempS.empty()){
+      unsigned curr = tempS.top();
+      std::vector<unsigned> numofop=pages[curr-1].getnumofop();
+      tempS.pop();
+      //iterate available page of curr
+      for(unsigned i = 0;i<numofop.size();i++){
+      unsigned pagenum = numofop[i];
+      std::set<unsigned>::iterator itofnum=reachPage.find(pagenum);
+      //check if the page is reachable
+      if(itofnum!=reachPage.end()){
+        if(!pages[pagenum-1].visited){
+          pages[pagenum-1].visited=true;
+          tempS.push(pagenum);
+          pages[pagenum-1].prevPage = std::pair<unsigned,unsigned>(curr,i+1);
+          if(pages[pagenum-1].getifwin()){
+            traceBack(pagenum);
+            sucPath.insert(std::pair<unsigned,unsigned>(pagenum,pages.size()+1));
+            return;
+          }
+        }
+        }
       }
     }
+  
   }
   
   void Story::traceBack(unsigned pagenum){
-    std::set<unsigned>::iterator it=reachPage.begin();
-    while(it!=reachPage.end()){
-      std::vector<unsigned> numofop=pages[*it-1].getnumofop();
-     // std::set<unsigned>::iterator itofnum=numofop.find(pagenum);
-     // if(itofnum!=numofop.end()){
-     for(size_t i = 0;i<numofop.size();i++){
-       if(numofop[i] == pagenum){
-       std::cout << "Page " << i+1 <<std::endl;
-        sucPath.insert(std::pair<unsigned,unsigned>(*it,i+1));
-        if(*it != 1){
-          traceBack(*it);
-        } else{
-          return;
-        }
-        break;
-       }
-      }
+    if(pagenum ==  1){
+      return;
+      //sucPath.insert(pages[numofop[i]-1].prevPage);
     }
+    traceBack(std::get<0>(pages[pagenum-1].prevPage));
+    //std::cout<<"trace "<<std::get<0>(pages[pagenum-1].prevPage)<<std::endl;
+    sucPath.insert(pages[pagenum-1].prevPage);
     return;
-  }
   
+  }
+
+
   void Story::printSucPath(){
-    std::set<std::pair<unsigned,unsigned>>::iterator it = sucPath.end();
-    while(it != sucPath.begin()){
-      if(std::get<1>(*it) != 0){
+    std::set<std::pair<unsigned,unsigned>>::iterator it = sucPath.begin();
+    //std::cout<<"size "<<sucPath.size()<<std::endl;
+    while(it != sucPath.end()){
+      if(std::get<1>(*it) != pages.size()+1){
         std::cout<<"Page "<<std::get<0>(*it)<<" Choice "<<std::get<1>(*it)<<std::endl;
+        //std::cout<<"Page "<<std::get<0>(*it)<<" Choice "<<std::endl;
       } else {
         //std::cout<<"Page "<<*it.first()<<" WIN"<<std::endl;
         std::cout<<"Page "<<std::get<0>(*it)<<" WIN"<<std::endl;
       }
-      --it;
+      ++it;
     }
   }
+  
+  //  void Story::findSucPath(){
+//    //iterate through the story's reachablt set
+//    std::set<unsigned>::iterator it=reachPage.begin();
+//    while(it!=reachPage.end()){
+//      //find the page that is win
+//      if(pages[*it-1].getifwin()){
+//      std::cout << "Page " << *it+1 <<std::endl;
+//        sucPath.insert(std::pair<unsigned,unsigned>(*it,0));
+//        traceBack(*it);
+//        return;
+//      }
+//    }
+//  }
+  
+//  void Story::traceBack(unsigned pagenum){
+//    std::set<unsigned>::iterator it=reachPage.begin();
+//    while(it!=reachPage.end()){
+//      std::vector<unsigned> numofop=pages[*it-1].getnumofop();
+//      std::vector<unsigned>::iterator itofnum=numofop.find(pagenum);
+//      //if we can find pagename in the file's numofop
+//     if(itofnum!=numofop.end()){
+//     unsigned num = *it-numof.begin()+1;
+//     std::cout << "Page " << i+1 <<std::endl;
+//      sucPath.insert(std::pair<unsigned,unsigned>(*it,i+1));
+//      if(*it != 1){
+//          traceBack(*it);
+//        }
+//        return;
+//        }
+////     for(size_t i = 0;i<numofop.size();i++){
+////       if(numofop[i] == pagenum){
+////       std::cout << "Page " << i+1 <<std::endl;
+////        sucPath.insert(std::pair<unsigned,unsigned>(*it,i+1));
+////        if(*it != 1){
+////          traceBack(*it);
+////        }
+////        return;
+////       }
+////      }
+//    }
+//    std::cout << "no succes path" << std::endl;
+//    return;
+//  }
+//  
   
   
   
