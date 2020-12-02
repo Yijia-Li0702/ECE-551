@@ -19,10 +19,9 @@ int main(int argc, char ** argv){
      //std::cerr<<"can't open the file";
     //}
   Page p;
-  p.setendwin(argv[1]);
-  p.readPage(argv[1]);
-  //p.setendwin(ifs);
-  //p.readPage(ifs);
+  //p.setendwin(argv[1]);
+  //p.readPage(argv[1]);
+  p.inipage(argv[1]);
   p.printPage();
   //ifs.close();
   

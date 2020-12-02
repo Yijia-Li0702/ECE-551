@@ -21,7 +21,7 @@ public:
   bool openPage(char * filename, int i);
   void openStory(char * filename);
   bool checkValid_4();
-  void ifnum(std::string pagenum);
+  bool ifnum(std::string pagenum);
   void display_5();
   void setReachP();
   void printUnreach();
@@ -29,5 +29,6 @@ public:
   void findSucPath();
   void traceBack(unsigned pagenum);
   void printSucPath();
+  void report_err(const char * report);
   ~Story(){}
 };

@@ -17,13 +17,11 @@ int main(int argc, char ** argv){
     Story s;
     s.openStory(argv[1]);
     if(!s.checkValid_4()){
-      std::cerr<<"invalid story" << std::endl;
-      exit(EXIT_FAILURE);
+      s.report_err("invalid story");
     }
     s.setReachP();
     if(!s.ifSucPathExist()){
-      std::cerr<<"There is no way to win"<<std::endl;
-      exit(EXIT_FAILURE);
+       s.report_err("There is no way to win");
     }
     s.findSucPath();
     s.printSucPath();

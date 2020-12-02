@@ -17,8 +17,7 @@ int main(int argc, char ** argv){
     Story s;
     s.openStory(argv[1]);
     if(!s.checkValid_4()){
-      std::cerr<<"invalid story" << std::endl;
-      exit(EXIT_FAILURE);
+      s.report_err("invalid story");
     }
     s.setReachP();
     s.printUnreach();
