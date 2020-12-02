@@ -7,16 +7,21 @@
 #include <cstdlib>
 #include <cstdio>
 #include <algorithm>
+#include <utility>
 #include "page.h"
 
 //to set if the page is endpage and win/lose
   void Page::setendwin(const char * filename){
-    std::ifstream ifs = tryopen(filename);
+    std::ifstream ifs;
+    ifs.open(filename,std::ifstream::in);
+    if(ifs.fail()){
+      report_err("can't open the file");
+    }
+    //ifs= tryopen(filename);
     std::string str;
     if(!ifs.eof()){
       //get the first line of infile
       getline(ifs,str);
-      //std::cout << str<<std::endl;
     }
     if(str == "LOSE"){
       endPage = true;
@@ -32,14 +37,14 @@
   }
   
   //try to open a page
-  std::ifstream Page::tryopen(const char * filename){
-    std::ifstream ifs;
-    ifs.open(filename,std::ifstream::in);
-    if(ifs.fail()){
-      report_err("can't open the file");
-    }
-    return ifs;
-  }
+//  std::ifstream Page::tryopen(const char * filename){
+//    std::ifstream ifs;
+//    ifs.open(filename,std::ifstream::in);
+//    if(ifs.fail()){
+//      report_err("can't open the file");
+//    }
+//    return ifs;
+//  }
   
   //report error and exit
   void Page::report_err(const char * report){
@@ -58,7 +63,12 @@
   
   //read one Page and initialize some fields
   void Page::readPage(const char * filename){
-    std::ifstream ifs = tryopen(filename);
+    std::ifstream ifs;
+    ifs.open(filename,std::ifstream::in);
+    if(ifs.fail()){
+      report_err("can't open the file");
+    }
+    //ifs= tryopen(filename);
     //if this line is an option
     bool ifoption = true;
     std::string str;
@@ -88,14 +98,15 @@
             //check if content before : is a number 
             this->ifnum(pagenum);
             //convert the number of page to unsigned int
-            unsigned num = std::stoul(pagenum);
+            //unsigned num = std::stoul(pagenum);
+            unsigned num = atoi(pagenum.c_str());
             if(num<=0){
               report_err("Invalid page number 2!");
             }
             //put value into containers
             numofop.push_back(num);
             option.push_back(optiontext);
-            numoption.insert({optiontext,num});    
+            numoption.insert(std::pair<std::string,unsigned>(optiontext,num));    
           }  
       } else {
         //write text
@@ -103,6 +114,10 @@
         text+="\n";
         }
       } 
+      if(ifoption){
+        std::cout << filename <<std::endl;
+        report_err("there's no text or #");
+      }
     ifs.close(); 
   }
   

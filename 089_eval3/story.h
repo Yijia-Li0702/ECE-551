@@ -8,6 +8,8 @@
 #include <algorithm>
 #include "page.h"
 
+/*this class is a story which put all pages in the directory into a vector,
+*/
 class Story {
 private:
   std::vector<Page> pages;
@@ -15,7 +17,7 @@ private:
   //std::set<Page> reachPage;
   std::set<unsigned> reachPage;
   //the first is the page num the second is num of option
-  std::set<std::pair<unsigned,unsigned>> sucPath;
+  std::set<std::pair<unsigned,unsigned> > sucPath;
 public:
   Story():pages(),reachPage(),sucPath(){}
   bool openPage(char * filename, int i);

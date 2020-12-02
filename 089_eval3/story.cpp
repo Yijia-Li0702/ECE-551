@@ -4,15 +4,22 @@
 #include <vector>
 #include <map>
 #include <set>
+#include <utility>
 #include <cstdlib>
 #include <algorithm>
+#include <sstream>
 #include <stack>
 #include "story.h"
 
  //open each page in a file and put it into pages
   bool Story::openPage(char * filename, int i){
     //open the page
-    std::string pagename = std::string(filename) + "//page"+std::to_string(i)+".txt";
+    std::stringstream ss;
+    std::string num_str;
+    ss<<i;
+    ss>>num_str;
+    //std::string pagename = std::string(filename) + "//page"+std::to_string(i)+".txt";
+    std::string pagename = std::string(filename) + "//page"+num_str+".txt";
     const char * n = pagename.c_str();
     std::ifstream ifs;
     ifs.open(n,std::ifstream::in);
@@ -49,13 +56,11 @@
   bool Story::checkValid_4(){
     //the amount of pages
     size_t numofpage = pages.size();
-    // size_t numofpage = szpages;
     //index represents one page, and the item = 1 means it is referred
     std::vector<int> referred(numofpage,0);
     //if there is one page is win and lose
     bool checkwin = false;
     bool checklose = false;
-   
     std::vector<Page>::iterator it = pages.begin();
     //check each page
     while(it!=pages.end()){
@@ -70,7 +75,6 @@
         referred[it->numofop[i]-1] = 1;
       }
       //check if there's at least one page is win and lose
-      //if(it->getifwin()&&it->getendPage()){
       if(it->ifwin&&it->endPage){
         checkwin = true;
       }
@@ -118,7 +122,8 @@
         continue;
       }
       //convert it into a number
-      unsigned num = std::stoul(input);
+      //unsigned num = std::stoul(input);
+      unsigned num = atoi(input.c_str());
       if(num <=0 || num > curr.option.size()){
         std::cout << "That is not a valid choice, please try again" <<std::endl;
         continue;
@@ -139,7 +144,6 @@
   void Story::setReachP(){
     //put page1 into set
     reachPage.insert(1);
-    //std::cout << pages.size()<<std::endl;
     //check if there is new page reachable
     bool ifchange = 1;
     while(ifchange){
@@ -176,7 +180,7 @@
   
   //check if there is a successful path
   bool Story::ifSucPathExist(){
-    //iterate through the story's reachablt set
+    //iterate through the story's reachable set
     std::set<unsigned>::iterator it=reachPage.begin();
     while(it!=reachPage.end()){
       //find the page that is win
@@ -208,10 +212,12 @@
         if(!pages[pagenum-1].visited){
           pages[pagenum-1].visited=true;
           tempS.push(pagenum);
-          pages[pagenum-1].prevPage = std::pair<unsigned,unsigned>(curr,i+1);
+          //pages[pagenum-1].prevPage = std::pair<unsigned,unsigned>(curr,i+1);
+          pages[pagenum-1].prevPage = std::make_pair(curr,i+1);
           if(pages[pagenum-1].getifwin()){
             traceBack(pagenum);
-            sucPath.insert(std::pair<unsigned,unsigned>(pagenum,pages.size()+1));
+            //sucPath.insert(std::pair<unsigned,unsigned>(pagenum,pages.size()+1));
+            sucPath.insert(std::make_pair(pagenum,pages.size()+1));
             return;
           }
         }
@@ -227,7 +233,8 @@
       return;
       //sucPath.insert(pages[numofop[i]-1].prevPage);
     }
-    traceBack(std::get<0>(pages[pagenum-1].prevPage));
+    //traceBack(std::get<0>(pages[pagenum-1].prevPage));
+    traceBack(pages[pagenum-1].prevPage.first);
     //std::cout<<"trace "<<std::get<0>(pages[pagenum-1].prevPage)<<std::endl;
     sucPath.insert(pages[pagenum-1].prevPage);
     return;
@@ -236,14 +243,15 @@
 
   //print successful path
   void Story::printSucPath(){
-    std::set<std::pair<unsigned,unsigned>>::iterator it = sucPath.begin();
+    std::set<std::pair<unsigned,unsigned> >::iterator it = sucPath.begin();
     //std::cout<<"size "<<sucPath.size()<<std::endl;
     while(it != sucPath.end()){
-      if(std::get<1>(*it) != pages.size()+1){
-        std::cout<<"Page "<<std::get<0>(*it)<<" Choice "<<std::get<1>(*it)<<std::endl;
-        //std::cout<<"Page "<<std::get<0>(*it)<<" Choice "<<std::endl;
+      //if(std::get<1>(*it) != pages.size()+1){
+      if((*it).second != pages.size()+1){
+        std::cout<<"Page "<<(*it).first<<" Choice "<<(*it).second<<std::endl;
+
       } else {
-        std::cout<<"Page "<<std::get<0>(*it)<<" WIN"<<std::endl;
+        std::cout<<"Page "<<(*it).first<<" WIN"<<std::endl;
       }
       ++it;
     }
