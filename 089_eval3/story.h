@@ -8,7 +8,7 @@
 #include <algorithm>
 #include "page.h"
 
-/*this class is a story which put all pages in the directory into a vector,
+/*this class is a story which put all pages in the directory into a vector
  */
 class Story {
  private:

@@ -7,6 +7,7 @@
 #include <cstdlib>
 #include <algorithm>
 
+/*This class is generate a Page, read each page and put options and number into container */
 class Page {
  public:
   std::string text;
