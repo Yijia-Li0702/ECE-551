@@ -10,16 +10,16 @@
 
 
 int main(int argc, char ** argv){
-    if (argc != 2) {
-      fprintf(stderr, "not enough input error\n");
-      return EXIT_FAILURE;
+  if (argc != 2) {
+    std::cerr<< "not enough input error"<<std::endl;
+    return EXIT_FAILURE;
   }
-    Story s;
-    s.openStory(argv[1]);
-    if(!s.checkValid_4()){
-      s.report_err("invalid story");
-    }
-    s.setReachP();
-    s.printUnreach();
-    return EXIT_SUCCESS;
+  Story s;
+  s.openStory(argv[1]);
+  if(!s.checkValid_4()){
+    s.report_err("invalid story");
   }
+  s.setReachP();
+  s.printUnreach();
+  return EXIT_SUCCESS;
+}

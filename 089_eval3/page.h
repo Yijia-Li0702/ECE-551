@@ -8,7 +8,7 @@
 #include <algorithm>
 
 class Page {
-public:
+ public:
   std::string text;
   std::vector<std::string> option;
   std::vector<unsigned> numofop;
@@ -18,8 +18,8 @@ public:
   std::pair<unsigned,unsigned> prevPage;
   bool visited;
   std::map<std::string,unsigned> numoption;
-public:
-  Page():text(),option(),numofop(),endPage(false),ifwin(false),prevPage(),visited(false),numoption(){}
+ public:
+ Page():text(),option(),numofop(),endPage(false),ifwin(false),prevPage(),visited(false),numoption(){}
   void setendwin(const char * filename);
   void readPage(const char * filename);
   void printPage();
@@ -36,8 +36,8 @@ public:
   ~Page(){}
   
 };
-  //Page():text(NULL),option(NULL),endPage(false),ifwin(false){}
-  //bool openPage(char * filename);
-  //void openStory(char * filename);
-  //void readPage(std::ifstream ifs);
-  //void setendwin(std::ifstream ifs);
+//Page():text(NULL),option(NULL),endPage(false),ifwin(false){}
+//bool openPage(char * filename);
+//void openStory(char * filename);
+//void readPage(std::ifstream ifs);
+//void setendwin(std::ifstream ifs);

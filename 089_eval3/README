@@ -14,7 +14,7 @@ choice of where to go. E.g. a page might end with
 The reader then selects one of these options, turns to the indicated page,
 and continues the story. 
 
-For our purposes, the "pages" of the adventure will be provided in a single
+For our purposes, the "pages" of the adventure will be provided in a singleq
 directory and numbered, starting with page1.txt. See the included example
 directories. Note that we define the story as the set of consecutive page
 numbers for which files exist. What we mean by this is that you can look
