@@ -36,7 +36,7 @@ int main(void) {
   Something s1(1);
   try {
     Something s2(7);
-    Something (3);  //read this line carefully.....
+    Something(3);  //read this line carefully.....
     int answer = f(-40);
     std::cout << "The answer is " << answer << "\n";
   }

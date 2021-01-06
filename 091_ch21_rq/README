@@ -11,7 +11,7 @@ D. measurable
 E. None of the above (all are common types of linked lists)
 
 2. What can you add to your linked list class to make the
-   "add to back" operation more efficient?
+   "add to back" operation more efficient? 
 
 A. previous pointers 
 B. skip pointers 
